@@ -299,8 +299,6 @@ fdescribe('Gear Grid', () => {
         it('should return all items which are relevant for the affinity calculation', () => {
           const relevantCells = gearGrid.getAllRelevantCellsForAffinity();
 
-          console.log('relevant cells: ', relevantCells);
-
           expect(relevantCells.length).toEqual(8);
           expect(relevantCells[0]).toBe(gearGrid.items[1]);
           expect(relevantCells[1]).toBe(gearGrid.items[3]);
