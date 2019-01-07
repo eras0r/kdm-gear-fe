@@ -2,17 +2,9 @@ import {AffinityColor} from './affinity-color';
 
 export class Item {
 
-  name: string;
-
-  topAffinity: AffinityColor;
-
-  leftAffinity: AffinityColor;
-
-  rightAffinity: AffinityColor;
-
-  bottomAffinity: AffinityColor;
-
-  constructor(public id: number) {
+  constructor(public id: number, public name?: string,
+              public topAffinity?: AffinityColor, public leftAffinity?: AffinityColor,
+              public rightAffinity?: AffinityColor, public bottomAffinity?: AffinityColor) {
 
   }
 
@@ -35,21 +27,21 @@ class Affinity {
 /**
  * Defines the fulfilled affinities for a gear item or the gear grid itself.
  */
-class FulfilledAffinites {
+export class FulfilledAffinites {
 
   /**
    * Count of fulfilled blue affinities.
    */
-  blue: number;
+  blue = 0;
 
   /**
    * Count of fulfilled green affinities.
    */
-  green: number;
+  green = 0;
 
   /**
    * Count of fulfilled red affinities.
    */
-  red: number;
+  red = 0;
 
 }
