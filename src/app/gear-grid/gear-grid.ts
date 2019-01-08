@@ -82,7 +82,8 @@ export class GearGrid {
 
     // gear position contains an item
     if (self) {
-      fulfilledAffinites = new FulfilledAffinites();
+      // initialize fulfilled affinities with self provided affinities if any
+      fulfilledAffinites = self.providedAffinities || new FulfilledAffinites();
 
       const top = this.getTop(position);
       if (top && self.topAffinity === top.bottomAffinity) {

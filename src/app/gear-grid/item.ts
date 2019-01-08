@@ -4,7 +4,7 @@ export class Item {
 
   constructor(public id: number, public name?: string,
               public topAffinity?: AffinityColor, public leftAffinity?: AffinityColor,
-              public rightAffinity?: AffinityColor, public bottomAffinity?: AffinityColor) {
+              public rightAffinity?: AffinityColor, public bottomAffinity?: AffinityColor, public providedAffinities?: FulfilledAffinites) {
 
   }
 
@@ -30,18 +30,13 @@ class Affinity {
 export class FulfilledAffinites {
 
   /**
-   * Count of fulfilled blue affinities.
+   *
+   * @param blue Count of fulfilled blue affinities.
+   * @param green Count of fulfilled green affinities.
+   * @param red Count of fulfilled red affinities.
    */
-  blue = 0;
+  constructor(public blue = 0, public green = 0, public red = 0) {
 
-  /**
-   * Count of fulfilled green affinities.
-   */
-  green = 0;
-
-  /**
-   * Count of fulfilled red affinities.
-   */
-  red = 0;
+  }
 
 }
