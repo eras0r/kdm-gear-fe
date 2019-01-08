@@ -123,36 +123,42 @@ export class GearGrid {
     }
   }
 
-  getAllRelevantCellsForAffinity(): Item[] {
-    let relevantItems: Item[] = [];
+  getAllRelevantCellIdsForAffinity(): number[] {
+    let relevantPositions: number[] = [];
 
     if (this.size % 2 === 0) {
       // gear grid has an even size
-      this.items.forEach((item, index) => {
+      for (let index = 0; index < this.getMaximumItemsCount(); index++) {
 
         if (Math.floor(index / this.size) % 2 === 0) {
-          // odd row
-
-          // add all odd columns
+          // even row -> add all odd columns
           if (index % 2 === 1) {
-            relevantItems.push(item);
+            relevantPositions.push(index);
           }
         } else {
-          // even row
-
-          // add all even columns
+          // odd row -> add all even columns
           if (index % 2 === 0) {
-            relevantItems.push(item);
+            relevantPositions.push(index);
           }
         }
 
-      });
+      }
     } else {
-      // gear grid has an odd size
-      relevantItems = this.items.filter((item, index) => index % 2 === 1);
+      // gear grid has an odd size -> use odd positions
+      relevantPositions = [];
+      for (let index = 0; index < this.getMaximumItemsCount(); index++) {
+        if (index % 2 === 1) {
+          relevantPositions.push(index);
+        }
+      }
     }
 
-    return relevantItems;
+    return relevantPositions;
+  }
+
+  getAllRelevantCellsForAffinity(): Item[] {
+    return this.getAllRelevantCellIdsForAffinity()
+      .map((position) => this.getItem(position));
   }
 
 }
