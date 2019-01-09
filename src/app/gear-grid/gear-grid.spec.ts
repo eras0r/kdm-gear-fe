@@ -48,14 +48,11 @@ describe('Gear Grid', () => {
       });
 
       describe('getLeft()', () => {
-
         it('should return undefined for all positions', () => {
-
           for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
             expect(gearGrid.getLeft(pos)).toBeUndefined();
           }
         });
-
       });
 
       describe('getRight()', () => {
@@ -98,33 +95,80 @@ describe('Gear Grid', () => {
 
         describe('top row', () => {
 
-          it('should return undefined', () => {
-            expect(gearGrid.getTop(0)).toBeUndefined();
-            expect(gearGrid.getTop(1)).toBeUndefined();
-            expect(gearGrid.getTop(2)).toBeUndefined();
+          describe('left column', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getTop(0)).toBeUndefined();
+            });
+          });
+
+          describe('center column', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getTop(1)).toBeUndefined();
+            });
+          });
+
+          describe('right column', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getTop(2)).toBeUndefined();
+            });
           });
 
         });
 
         describe('middle row', () => {
 
-          it('should return the corresponding item from the top row', () => {
-            const left = gearGrid.getTop(3);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(0);
+          describe('left column', () => {
+            it('should return neighbour from the top row', () => {
+              const left = gearGrid.getTop(3);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(0);
+            });
+          });
 
-            const center = gearGrid.getTop(4);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(1);
+          describe('center column', () => {
+            it('should return neighbour from the top row', () => {
+              const center = gearGrid.getTop(4);
+              expect(center).toBeDefined();
+              expect(center.id).toBe(1);
+            });
+          });
 
-            const right = gearGrid.getTop(5);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(2);
+          describe('right column', () => {
+            it('should return neighbour from the top row', () => {
+              const right = gearGrid.getTop(5);
+              expect(right).toBeDefined();
+              expect(right.id).toBe(2);
+
+            });
           });
 
         });
 
         describe('bottom row', () => {
+
+          describe('left column', () => {
+            it('should return neighbour from the middle row', () => {
+              const left = gearGrid.getTop(6);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(3);
+            });
+          });
+
+          describe('center column', () => {
+            it('should return neighbour from the middle row', () => {
+              const left = gearGrid.getTop(7);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(4);
+            });
+          });
+
+          describe('right column', () => {
+            it('should return neighbour from the middle row', () => {
+              const left = gearGrid.getTop(8);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(5);
+            });
+          });
 
           it('should return the corresponding item from the top row', () => {
             const left = gearGrid.getTop(6);
@@ -148,46 +192,78 @@ describe('Gear Grid', () => {
 
         describe('top row', () => {
 
-          it('should return the corresponding item from the middle row', () => {
-            const left = gearGrid.getBottom(0);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(3);
+          describe('left column', () => {
+            it('should return neighbour from the middle row', () => {
+              const left = gearGrid.getBottom(0);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(3);
+            });
+          });
 
-            const center = gearGrid.getBottom(1);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(4);
+          describe('center column', () => {
+            it('should return neighbour from the middle row', () => {
+              const left = gearGrid.getBottom(1);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(4);
+            });
+          });
 
-            const right = gearGrid.getBottom(2);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(5);
+          describe('right column', () => {
+            it('should return neighbour from the middle row', () => {
+              const left = gearGrid.getBottom(2);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(5);
+            });
           });
 
         });
 
         describe('middle row', () => {
 
-          it('should return the corresponding item from the top row', () => {
-            const left = gearGrid.getBottom(3);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(6);
+          describe('left column', () => {
+            it('should return neighbour from the bottom row', () => {
+              const left = gearGrid.getBottom(3);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(6);
+            });
+          });
 
-            const center = gearGrid.getBottom(4);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(7);
+          describe('center column', () => {
+            it('should return neighbour from the bottom row', () => {
+              const left = gearGrid.getBottom(4);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(7);
+            });
+          });
 
-            const right = gearGrid.getBottom(5);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(8);
+          describe('right column', () => {
+            it('should return neighbour from the bottom row', () => {
+              const left = gearGrid.getBottom(5);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(8);
+            });
           });
 
         });
 
         describe('bottom row', () => {
 
-          it('should return undefined', () => {
-            expect(gearGrid.getBottom(6)).toBeUndefined();
-            expect(gearGrid.getBottom(7)).toBeUndefined();
-            expect(gearGrid.getBottom(8)).toBeUndefined();
+          describe('left column', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getBottom(6)).toBeUndefined();
+            });
+          });
+
+          describe('center column', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getBottom(7)).toBeUndefined();
+            });
+          });
+
+          describe('right column', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getBottom(8)).toBeUndefined();
+            });
           });
 
         });
@@ -198,46 +274,80 @@ describe('Gear Grid', () => {
 
         describe('left column', () => {
 
-          it('should return undefined', () => {
-            expect(gearGrid.getLeft(0)).toBeUndefined();
-            expect(gearGrid.getLeft(3)).toBeUndefined();
-            expect(gearGrid.getLeft(6)).toBeUndefined();
+          describe('top row', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getLeft(0)).toBeUndefined();
+            });
+          });
+
+          describe('middle row', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getLeft(3)).toBeUndefined();
+
+            });
+          });
+
+          describe('bottom row', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getLeft(6)).toBeUndefined();
+
+            });
           });
 
         });
 
         describe('center column', () => {
 
-          it('should return the corresponding item from the left column', () => {
-            const left = gearGrid.getLeft(1);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(0);
+          describe('top row', () => {
+            it('should return the neighbour from the left column', () => {
+              const left = gearGrid.getLeft(1);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(0);
+            });
+          });
 
-            const center = gearGrid.getLeft(4);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(3);
+          describe('middle row', () => {
+            it('should return the neighbour from the left column', () => {
+              const center = gearGrid.getLeft(4);
+              expect(center).toBeDefined();
+              expect(center.id).toBe(3);
+            });
+          });
 
-            const right = gearGrid.getLeft(7);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(6);
+          describe('bottom row', () => {
+            it('should return the neighbour from the left column', () => {
+              const right = gearGrid.getLeft(7);
+              expect(right).toBeDefined();
+              expect(right.id).toBe(6);
+            });
           });
 
         });
 
         describe('right column', () => {
 
-          it('should return the corresponding item from the center column', () => {
-            const left = gearGrid.getLeft(2);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(1);
+          describe('top row', () => {
+            it('should return the neighbour from the center column', () => {
+              const left = gearGrid.getLeft(2);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(1);
+            });
+          });
 
-            const center = gearGrid.getLeft(5);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(4);
+          describe('middle row', () => {
+            it('should return the neighbour from the center column', () => {
+              const center = gearGrid.getLeft(5);
+              expect(center).toBeDefined();
+              expect(center.id).toBe(4);
+            });
+          });
 
-            const right = gearGrid.getLeft(8);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(7);
+          describe('bottom row', () => {
+            it('should return the neighbour from the center column', () => {
+              const right = gearGrid.getLeft(8);
+              expect(right).toBeDefined();
+              expect(right.id).toBe(7);
+            });
           });
 
         });
@@ -248,46 +358,78 @@ describe('Gear Grid', () => {
 
         describe('left column', () => {
 
-          it('should return the corresponding item from the center column', () => {
-            const left = gearGrid.getRight(0);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(1);
+          describe('top row', () => {
+            it('should return the neighbour from the center column', () => {
+              const left = gearGrid.getRight(0);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(1);
+            });
+          });
 
-            const center = gearGrid.getRight(3);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(4);
+          describe('middle row', () => {
+            it('should return the neighbour from the center column', () => {
+              const center = gearGrid.getRight(3);
+              expect(center).toBeDefined();
+              expect(center.id).toBe(4);
+            });
+          });
 
-            const right = gearGrid.getRight(6);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(7);
+          describe('bottom row', () => {
+            it('should return the neighbour from the center column', () => {
+              const right = gearGrid.getRight(6);
+              expect(right).toBeDefined();
+              expect(right.id).toBe(7);
+            });
           });
 
         });
 
         describe('center column', () => {
 
-          it('should return the corresponding item from the right column', () => {
-            const left = gearGrid.getRight(1);
-            expect(left).toBeDefined();
-            expect(left.id).toBe(2);
+          describe('top row', () => {
+            it('should return the neighbour from the right column', () => {
+              const left = gearGrid.getRight(1);
+              expect(left).toBeDefined();
+              expect(left.id).toBe(2);
+            });
+          });
 
-            const center = gearGrid.getRight(4);
-            expect(center).toBeDefined();
-            expect(center.id).toBe(5);
+          describe('middle row', () => {
+            it('should return the neighbour from the right column', () => {
+              const center = gearGrid.getRight(4);
+              expect(center).toBeDefined();
+              expect(center.id).toBe(5);
+            });
+          });
 
-            const right = gearGrid.getRight(7);
-            expect(right).toBeDefined();
-            expect(right.id).toBe(8);
+          describe('bottom row', () => {
+            it('should return the neighbour from the right column', () => {
+              const right = gearGrid.getRight(7);
+              expect(right).toBeDefined();
+              expect(right.id).toBe(8);
+            });
           });
 
         });
 
         describe('right column', () => {
 
-          it('should return undefined', () => {
-            expect(gearGrid.getRight(2)).toBeUndefined();
-            expect(gearGrid.getRight(5)).toBeUndefined();
-            expect(gearGrid.getRight(8)).toBeUndefined();
+          describe('top row', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getRight(2)).toBeUndefined();
+            });
+          });
+
+          describe('middle row', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getRight(5)).toBeUndefined();
+            });
+          });
+
+          describe('bottom row', () => {
+            it('should return undefined', () => {
+              expect(gearGrid.getRight(8)).toBeUndefined();
+            });
           });
 
         });
@@ -572,7 +714,8 @@ describe('Gear Grid', () => {
 
   });
 
-});
+})
+;
 
 /**
  * Gets en empty gear grid with a size 3 by 3.
