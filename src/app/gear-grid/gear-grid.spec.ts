@@ -415,7 +415,7 @@ describe('Gear Grid', () => {
    * |    r    |    g    |    r    |
    * |         |         |         |
    * |    6   g|g   7   g|g   8    |
-   * |         |   r r   |         |
+   * |         |   r r   |    r    |
    * |         |         |         |
    * +---------+---------+---------+
    */
@@ -435,134 +435,151 @@ describe('Gear Grid', () => {
       gearGrid.items[6] = new Item(6, '6', AffinityColor.Red, undefined, AffinityColor.Green);
       gearGrid.items[7] = new Item(7, '7', AffinityColor.Green, AffinityColor.Green, AffinityColor.Green, undefined,
         new FulfilledAffinites(0, 0, 2));
-      gearGrid.items[8] = new Item(8, '8', AffinityColor.Red, AffinityColor.Green);
+      gearGrid.items[8] = new Item(8, '8', AffinityColor.Red, AffinityColor.Green, undefined, undefined,
+        new FulfilledAffinites(0, 0, 1));
 
     });
 
-    describe('empty gear positions', () => {
+    describe('getAffinitiesForCell()', () => {
 
-      it('should return undefined', () => {
-        expect(gearGrid.getAffinitiesForCell(0)).toBeUndefined();
+      describe('empty gear positions', () => {
+
+        it('should return undefined', () => {
+          expect(gearGrid.getAffinitiesForCell(0)).toBeUndefined();
+        });
+
+      });
+
+      describe('north item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(1);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(0);
+          expect(affinities.green).toEqual(0);
+          expect(affinities.red).toEqual(1);
+        });
+
+      });
+
+      describe('north east item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(2);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(0);
+          expect(affinities.green).toEqual(0);
+          expect(affinities.red).toEqual(0);
+        });
+
+      });
+
+      describe('west item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(3);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(0);
+          expect(affinities.green).toEqual(0);
+          expect(affinities.red).toEqual(1);
+        });
+
+      });
+
+      describe('east item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(5);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(2);
+          expect(affinities.green).toEqual(0);
+          expect(affinities.red).toEqual(0);
+        });
+
+      });
+
+      describe('center item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(4);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(1);
+          expect(affinities.green).toEqual(1);
+          expect(affinities.red).toEqual(2);
+        });
+
+      });
+
+      describe('south west item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(6);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(0);
+          expect(affinities.green).toEqual(1);
+          expect(affinities.red).toEqual(0);
+        });
+
+      });
+
+      describe('south item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(7);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(0);
+          expect(affinities.green).toEqual(3);
+          expect(affinities.red).toEqual(2);
+        });
+
+      });
+
+      describe('south east item', () => {
+
+        beforeEach(() => {
+          affinities = gearGrid.getAffinitiesForCell(8);
+        });
+
+        it('should return correct affinities', () => {
+          expect(affinities).toBeDefined();
+          expect(affinities.blue).toEqual(0);
+          expect(affinities.green).toEqual(1);
+          expect(affinities.red).toEqual(1);
+        });
+
       });
 
     });
 
-    describe('north item', () => {
+    describe('getAffinitiesForGrid()', () => {
 
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(1);
-      });
+      it('should have the proper affinities', () => {
+        const fulfilledAffinites = gearGrid.getAffinitiesForGrid();
+        expect(fulfilledAffinites.blue).toEqual(2);
+        expect(fulfilledAffinites.green).toEqual(3);
+        expect(fulfilledAffinites.red).toEqual(5);
 
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(0);
-        expect(affinities.green).toEqual(0);
-        expect(affinities.red).toEqual(1);
-      });
-
-    });
-
-    describe('north east item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(2);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(0);
-        expect(affinities.green).toEqual(0);
-        expect(affinities.red).toEqual(0);
-      });
-
-    });
-
-    describe('west item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(3);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(0);
-        expect(affinities.green).toEqual(0);
-        expect(affinities.red).toEqual(1);
-      });
-
-    });
-
-    describe('east item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(5);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(2);
-        expect(affinities.green).toEqual(0);
-        expect(affinities.red).toEqual(0);
-      });
-
-    });
-
-    describe('center item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(4);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(1);
-        expect(affinities.green).toEqual(1);
-        expect(affinities.red).toEqual(2);
-      });
-
-    });
-
-    describe('south west item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(6);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(0);
-        expect(affinities.green).toEqual(1);
-        expect(affinities.red).toEqual(0);
-      });
-
-    });
-
-    describe('south item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(7);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(0);
-        expect(affinities.green).toEqual(3);
-        expect(affinities.red).toEqual(2);
-      });
-
-    });
-
-    describe('south east item', () => {
-
-      beforeEach(() => {
-        affinities = gearGrid.getAffinitiesForCell(8);
-      });
-
-      it('should return correct affinities', () => {
-        expect(affinities).toBeDefined();
-        expect(affinities.blue).toEqual(0);
-        expect(affinities.green).toEqual(1);
-        expect(affinities.red).toEqual(0);
       });
 
     });

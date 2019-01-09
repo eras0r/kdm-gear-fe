@@ -109,6 +109,25 @@ export class GearGrid {
   }
 
   /**
+   * Gets the fulfilled affinities for the whole grid.
+   */
+  getAffinitiesForGrid(): FulfilledAffinites {
+    const fulfilledAffinites = new FulfilledAffinites();
+
+    this.getAllNonRelevantCellPositionsForNeighbourAffinity()
+      .map((pos) => this.getItem(pos)) // get items from positions
+      .filter((item) => item) // filter empty items
+      .map((item) => item.providedAffinities) // extract provided affinities
+      .forEach((affinities) => fulfilledAffinites.add(affinities));
+
+    this.getAllRelevantCellPositionsForNeighbourAffinity()
+      .map((pos) => this.getAffinitiesForCell(pos))
+      .forEach((affinities) => fulfilledAffinites.add(affinities));
+
+    return fulfilledAffinites;
+  }
+
+  /**
    * Gets all relevant positions for the neighbour affinity calculations.
    */
   getAllRelevantCellPositionsForNeighbourAffinity(): number[] {

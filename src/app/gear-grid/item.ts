@@ -57,4 +57,16 @@ export class FulfilledAffinites {
     }
   }
 
+  /**
+   * Adds the given fulfilled affinities to this object.
+   * @param other the fulfilled affinities to be added.
+   */
+  add(other: FulfilledAffinites): void {
+    if (other) {
+      this.blue += other.blue;
+      this.green += other.green;
+      this.red += other.red;
+    }
+  }
+
 }
