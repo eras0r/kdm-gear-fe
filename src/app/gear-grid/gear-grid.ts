@@ -108,6 +108,9 @@ export class GearGrid {
     return fulfilledAffinites;
   }
 
+  /**
+   * Gets all relevant positions for the neighbour affinity calculations.
+   */
   getAllRelevantCellPositionsForNeighbourAffinity(): number[] {
     let relevantPositions: number[] = [];
 
@@ -141,6 +144,25 @@ export class GearGrid {
     return relevantPositions;
   }
 
+  /**
+   * Gets all non relevant positions for the neighbour affinity calculations.
+   * Those items are needed because they might provide an affinity by an item directly (without needing a neighbour).
+   */
+  getAllNonRelevantCellPositionsForNeighbourAffinity(): number[] {
+    const relevantPositions = this.getAllRelevantCellPositionsForNeighbourAffinity();
+    const nonRelevantPositions = [];
+    for (let position = 0; position < this.getMaximumItemsCount(); position++) {
+      if (relevantPositions.findIndex((releventPosition) => releventPosition === position) < 0) {
+        nonRelevantPositions.push(position);
+      }
+    }
+
+    return nonRelevantPositions;
+  }
+
+  /**
+   * Gets all relevant items for the neighbour affinity calculations.
+   */
   getAllRelevantCellsForNeighbourAffinity(): Item[] {
     return this.getAllRelevantCellPositionsForNeighbourAffinity()
       .map((position) => this.getItem(position));
