@@ -128,17 +128,17 @@ export class GearGrid {
 
     if (this.size % 2 === 0) {
       // gear grid has an even size
-      for (let index = 0; index < this.getMaximumItemsCount(); index++) {
+      for (let position = 0; position < this.getMaximumItemsCount(); position++) {
 
-        if (Math.floor(index / this.size) % 2 === 0) {
+        if (Math.floor(position / this.size) % 2 === 0) {
           // even row -> add all odd columns
-          if (index % 2 === 1) {
-            relevantPositions.push(index);
+          if (position % 2 === 1) {
+            relevantPositions.push(position);
           }
         } else {
           // odd row -> add all even columns
-          if (index % 2 === 0) {
-            relevantPositions.push(index);
+          if (position % 2 === 0) {
+            relevantPositions.push(position);
           }
         }
 
@@ -146,9 +146,9 @@ export class GearGrid {
     } else {
       // gear grid has an odd size -> use odd positions
       relevantPositions = [];
-      for (let index = 0; index < this.getMaximumItemsCount(); index++) {
-        if (index % 2 === 1) {
-          relevantPositions.push(index);
+      for (let position = 0; position < this.getMaximumItemsCount(); position++) {
+        if (position % 2 === 1) {
+          relevantPositions.push(position);
         }
       }
     }
