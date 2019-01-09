@@ -267,20 +267,6 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getAllRelevantCellsForNeighbourAffinity()', () => {
-
-        it('should return all items which are relevant for the affinity calculation', () => {
-          const relevantCells = gearGrid.getAllRelevantCellsForNeighbourAffinity();
-
-          expect(relevantCells.length).toEqual(4);
-          expect(relevantCells[0]).toBe(gearGrid.items[1]);
-          expect(relevantCells[1]).toBe(gearGrid.items[3]);
-          expect(relevantCells[2]).toBe(gearGrid.items[5]);
-          expect(relevantCells[3]).toBe(gearGrid.items[7]);
-        });
-
-      });
-
     });
 
     describe('getMaximumItemsCount()', () => {
@@ -356,24 +342,6 @@ describe('Gear Grid', () => {
           expect(relevantCellIds[5]).toBe(10);
           expect(relevantCellIds[6]).toBe(13);
           expect(relevantCellIds[7]).toBe(15);
-        });
-
-      });
-
-      describe('getAllRelevantCellsForNeighbourAffinity()', () => {
-
-        it('should return all items which are relevant for the affinity calculation', () => {
-          const relevantCells = gearGrid.getAllRelevantCellsForNeighbourAffinity();
-
-          expect(relevantCells.length).toEqual(8);
-          expect(relevantCells[0]).toBe(gearGrid.items[1]);
-          expect(relevantCells[1]).toBe(gearGrid.items[3]);
-          expect(relevantCells[2]).toBe(gearGrid.items[4]);
-          expect(relevantCells[3]).toBe(gearGrid.items[6]);
-          expect(relevantCells[4]).toBe(gearGrid.items[9]);
-          expect(relevantCells[5]).toBe(gearGrid.items[11]);
-          expect(relevantCells[6]).toBe(gearGrid.items[12]);
-          expect(relevantCells[7]).toBe(gearGrid.items[14]);
         });
 
       });

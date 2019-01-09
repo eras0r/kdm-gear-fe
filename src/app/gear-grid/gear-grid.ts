@@ -179,12 +179,4 @@ export class GearGrid {
     return nonRelevantPositions;
   }
 
-  /**
-   * Gets all relevant items for the neighbour affinity calculations.
-   */
-  getAllRelevantCellsForNeighbourAffinity(): Item[] {
-    return this.getAllRelevantCellPositionsForNeighbourAffinity()
-      .map((position) => this.getItem(position));
-  }
-
 }
