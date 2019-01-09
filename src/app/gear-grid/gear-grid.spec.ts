@@ -9,7 +9,7 @@ describe('Gear Grid', () => {
   describe('3 by 3 grid', () => {
 
     beforeEach(() => {
-      gearGrid = new GearGrid(3);
+      gearGrid = getEmptyTestGrid(3);
     });
 
     describe('completely filled with items', () => {
@@ -290,7 +290,7 @@ describe('Gear Grid', () => {
   describe('4 by 4 grid', () => {
 
     beforeEach(() => {
-      gearGrid = new GearGrid(4);
+      gearGrid = getEmptyTestGrid(4);
     });
 
     describe('completely filled with items', () => {
@@ -366,46 +366,12 @@ describe('Gear Grid', () => {
 
   });
 
-  /**
-   * +---------+---------+---------+
-   * |         |         |         |
-   * |         |         |         |
-   * |    0    |    1    |    2    |
-   * |         |         |         |
-   * |         |    r    |    b    |
-   * +---------+---------+---------+
-   * |         |    r    |    r    |
-   * |         |         |         |
-   * |    3   r|r   4   b|b   5    |
-   * |         |         |    b    |
-   * |    g    |    g    |         |
-   * +---------+---------+---------+
-   * |    r    |    g    |    r    |
-   * |         |         |         |
-   * |    6   g|g   7   g|g   8    |
-   * |         |   r r   |    r    |
-   * |         |         |         |
-   * +---------+---------+---------+
-   */
   describe('affinity calculations', () => {
 
     let affinities: FulfilledAffinites;
 
     beforeEach(() => {
-
-      gearGrid = new GearGrid(3);
-      gearGrid.items[1] = new Item(1, '1', undefined, undefined, undefined, AffinityColor.Red);
-      gearGrid.items[2] = new Item(2, '2', undefined, undefined, undefined, AffinityColor.Blue);
-      gearGrid.items[3] = new Item(3, '3', undefined, undefined, AffinityColor.Red, AffinityColor.Green);
-      gearGrid.items[4] = new Item(4, '4', AffinityColor.Red, AffinityColor.Red, AffinityColor.Blue, AffinityColor.Green);
-      gearGrid.items[5] = new Item(5, '5', AffinityColor.Red, AffinityColor.Blue, undefined, undefined,
-        new FulfilledAffinites(1));
-      gearGrid.items[6] = new Item(6, '6', AffinityColor.Red, undefined, AffinityColor.Green);
-      gearGrid.items[7] = new Item(7, '7', AffinityColor.Green, AffinityColor.Green, AffinityColor.Green, undefined,
-        new FulfilledAffinites(0, 0, 2));
-      gearGrid.items[8] = new Item(8, '8', AffinityColor.Red, AffinityColor.Green, undefined, undefined,
-        new FulfilledAffinites(0, 0, 1));
-
+      gearGrid = getTestGridWithItems();
     });
 
     describe('getAffinitiesForCell()', () => {
@@ -555,3 +521,51 @@ describe('Gear Grid', () => {
   });
 
 });
+
+/**
+ * Gets en empty gear grid with a size 3 by 3.
+ */
+function getEmptyTestGrid(size): GearGrid {
+  return new GearGrid(size);
+}
+
+/**
+ * Gets the following gear grid filled with some items.
+ *
+ * +---------+---------+---------+
+ * |         |         |         |
+ * |         |         |         |
+ * |    0    |    1    |    2    |
+ * |         |         |         |
+ * |         |    r    |    b    |
+ * +---------+---------+---------+
+ * |         |    r    |    r    |
+ * |         |         |         |
+ * |    3   r|r   4   b|b   5    |
+ * |         |         |    b    |
+ * |    g    |    g    |         |
+ * +---------+---------+---------+
+ * |    r    |    g    |    r    |
+ * |         |         |         |
+ * |    6   g|g   7   g|g   8    |
+ * |         |   r r   |    r    |
+ * |         |         |         |
+ * +---------+---------+---------+
+ */
+function getTestGridWithItems(): GearGrid {
+  const gearGrid = getEmptyTestGrid(3);
+
+  gearGrid.items[1] = new Item(1, '1', undefined, undefined, undefined, AffinityColor.Red);
+  gearGrid.items[2] = new Item(2, '2', undefined, undefined, undefined, AffinityColor.Blue);
+  gearGrid.items[3] = new Item(3, '3', undefined, undefined, AffinityColor.Red, AffinityColor.Green);
+  gearGrid.items[4] = new Item(4, '4', AffinityColor.Red, AffinityColor.Red, AffinityColor.Blue, AffinityColor.Green);
+  gearGrid.items[5] = new Item(5, '5', AffinityColor.Red, AffinityColor.Blue, undefined, undefined,
+    new FulfilledAffinites(1));
+  gearGrid.items[6] = new Item(6, '6', AffinityColor.Red, undefined, AffinityColor.Green);
+  gearGrid.items[7] = new Item(7, '7', AffinityColor.Green, AffinityColor.Green, AffinityColor.Green, undefined,
+    new FulfilledAffinites(0, 0, 2));
+  gearGrid.items[8] = new Item(8, '8', AffinityColor.Red, AffinityColor.Green, undefined, undefined,
+    new FulfilledAffinites(0, 0, 1));
+
+  return gearGrid;
+}
