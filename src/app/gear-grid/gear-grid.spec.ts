@@ -238,10 +238,10 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getAllRelevantCellIdsForAffinity()', () => {
+      describe('getAllRelevantCellPositionsForNeighbourAffinity()', () => {
 
         it('should return all positions which are relevant for the affinity neighbour calculation', () => {
-          const relevantCellIds = gearGrid.getAllRelevantCellIdsForAffinity();
+          const relevantCellIds = gearGrid.getAllRelevantCellPositionsForNeighbourAffinity();
 
           expect(relevantCellIds.length).toEqual(4);
           expect(relevantCellIds[0]).toBe(1);
@@ -252,10 +252,10 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getAllRelevantCellsForAffinity()', () => {
+      describe('getAllRelevantCellsForNeighbourAffinity()', () => {
 
         it('should return all items which are relevant for the affinity calculation', () => {
-          const relevantCells = gearGrid.getAllRelevantCellsForAffinity();
+          const relevantCells = gearGrid.getAllRelevantCellsForNeighbourAffinity();
 
           expect(relevantCells.length).toEqual(4);
           expect(relevantCells[0]).toBe(gearGrid.items[1]);
@@ -308,10 +308,10 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getAllRelevantCellsForAffinity()', () => {
+      describe('getAllRelevantCellsForNeighbourAffinity()', () => {
 
         it('should return all positions which are relevant for the affinity neighbour calculation', () => {
-          const relevantCellIds = gearGrid.getAllRelevantCellIdsForAffinity();
+          const relevantCellIds = gearGrid.getAllRelevantCellPositionsForNeighbourAffinity();
 
           expect(relevantCellIds.length).toEqual(8);
           expect(relevantCellIds[0]).toBe(1);
@@ -326,10 +326,10 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getAllRelevantCellsForAffinity()', () => {
+      describe('getAllRelevantCellsForNeighbourAffinity()', () => {
 
         it('should return all items which are relevant for the affinity calculation', () => {
-          const relevantCells = gearGrid.getAllRelevantCellsForAffinity();
+          const relevantCells = gearGrid.getAllRelevantCellsForNeighbourAffinity();
 
           expect(relevantCells.length).toEqual(8);
           expect(relevantCells[0]).toBe(gearGrid.items[1]);

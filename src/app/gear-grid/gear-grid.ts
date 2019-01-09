@@ -123,7 +123,7 @@ export class GearGrid {
     }
   }
 
-  getAllRelevantCellIdsForAffinity(): number[] {
+  getAllRelevantCellPositionsForNeighbourAffinity(): number[] {
     let relevantPositions: number[] = [];
 
     if (this.size % 2 === 0) {
@@ -156,8 +156,8 @@ export class GearGrid {
     return relevantPositions;
   }
 
-  getAllRelevantCellsForAffinity(): Item[] {
-    return this.getAllRelevantCellIdsForAffinity()
+  getAllRelevantCellsForNeighbourAffinity(): Item[] {
+    return this.getAllRelevantCellPositionsForNeighbourAffinity()
       .map((position) => this.getItem(position));
   }
 
