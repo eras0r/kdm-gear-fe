@@ -12,20 +12,84 @@ describe('Gear Grid', () => {
       gearGrid = getEmptyTestGrid(3);
     });
 
-    describe('completely filled with items', () => {
+    describe('empty', () => {
+
+      describe('getItemsCount()', () => {
+
+        it('should return 0', () => {
+          expect(gearGrid.getItemsCount()).toEqual(0);
+        });
+
+      });
+
+      describe('getItem()', () => {
+        it('should return undefined for all positions', () => {
+          for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+            const item = gearGrid.getItem(pos);
+            expect(item).toBeUndefined();
+          }
+        });
+      });
+
+      describe('getTop()', () => {
+        it('should return undefined for all positions', () => {
+          for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+            expect(gearGrid.getTop(pos)).toBeUndefined();
+          }
+        });
+      });
+
+      describe('getBottom()', () => {
+        it('should return undefined for all positions', () => {
+          for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+            expect(gearGrid.getBottom(pos)).toBeUndefined();
+          }
+        });
+      });
+
+      describe('getLeft()', () => {
+
+        it('should return undefined for all positions', () => {
+
+          for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+            expect(gearGrid.getLeft(pos)).toBeUndefined();
+          }
+        });
+
+      });
+
+      describe('getRight()', () => {
+        it('should return undefined for all positions', () => {
+          for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+            expect(gearGrid.getRight(pos)).toBeUndefined();
+          }
+        });
+      });
+
+    });
+
+    describe('completely filled with fake items', () => {
 
       beforeEach(() => {
-        for (let i = 0; i < gearGrid.getMaximumItemsCount(); i++) {
-          gearGrid.items.push(new Item(i));
+        for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+          gearGrid.items.push(new Item(pos));
         }
+      });
+
+      describe('getItemsCount()', () => {
+
+        it('should return 9', () => {
+          expect(gearGrid.getItemsCount()).toEqual(9);
+        });
+
       });
 
       describe('getItem()', () => {
         it('should retrieve the proper items', () => {
-          for (let i = 0; i < gearGrid.getMaximumItemsCount(); i++) {
-            const item = gearGrid.getItem(i);
+          for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+            const item = gearGrid.getItem(pos);
             expect(item).toBeDefined();
-            expect(item.id).toEqual(i);
+            expect(item.id).toEqual(pos);
           }
         });
       });
@@ -230,43 +294,6 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getItemsCount()', () => {
-
-        it('should return the items count if all items are filled', () => {
-          expect(gearGrid.getItemsCount()).toEqual(9);
-        });
-
-      });
-
-      describe('getAllRelevantCellPositionsForNeighbourAffinity()', () => {
-
-        it('should return all positions which are relevant for the affinity neighbour calculation', () => {
-          const relevantCellIds = gearGrid.getAllRelevantCellPositionsForNeighbourAffinity();
-
-          expect(relevantCellIds.length).toEqual(4);
-          expect(relevantCellIds[0]).toBe(1);
-          expect(relevantCellIds[1]).toBe(3);
-          expect(relevantCellIds[2]).toBe(5);
-          expect(relevantCellIds[3]).toBe(7);
-        });
-
-      });
-
-      describe('getAllNonRelevantCellPositionsForNeighbourAffinity()', () => {
-
-        it('should return all positions which are not relevant for the affinity neighbour calculation', () => {
-          const relevantCellIds = gearGrid.getAllNonRelevantCellPositionsForNeighbourAffinity();
-
-          expect(relevantCellIds.length).toEqual(5);
-          expect(relevantCellIds[0]).toBe(0);
-          expect(relevantCellIds[1]).toBe(2);
-          expect(relevantCellIds[2]).toBe(4);
-          expect(relevantCellIds[3]).toBe(6);
-          expect(relevantCellIds[4]).toBe(8);
-        });
-
-      });
-
     });
 
     describe('getMaximumItemsCount()', () => {
@@ -277,10 +304,31 @@ describe('Gear Grid', () => {
 
     });
 
-    describe('getItemsCount()', () => {
+    describe('getAllRelevantCellPositionsForNeighbourAffinity()', () => {
 
-      it('should return 0', () => {
-        expect(gearGrid.getItemsCount()).toEqual(0);
+      it('should return all positions which are relevant for the affinity neighbour calculation', () => {
+        const relevantCellIds = gearGrid.getAllRelevantCellPositionsForNeighbourAffinity();
+
+        expect(relevantCellIds.length).toEqual(4);
+        expect(relevantCellIds[0]).toBe(1);
+        expect(relevantCellIds[1]).toBe(3);
+        expect(relevantCellIds[2]).toBe(5);
+        expect(relevantCellIds[3]).toBe(7);
+      });
+
+    });
+
+    describe('getAllNonRelevantCellPositionsForNeighbourAffinity()', () => {
+
+      it('should return all positions which are not relevant for the affinity neighbour calculation', () => {
+        const relevantCellIds = gearGrid.getAllNonRelevantCellPositionsForNeighbourAffinity();
+
+        expect(relevantCellIds.length).toEqual(5);
+        expect(relevantCellIds[0]).toBe(0);
+        expect(relevantCellIds[1]).toBe(2);
+        expect(relevantCellIds[2]).toBe(4);
+        expect(relevantCellIds[3]).toBe(6);
+        expect(relevantCellIds[4]).toBe(8);
       });
 
     });
@@ -296,8 +344,8 @@ describe('Gear Grid', () => {
     describe('completely filled with items', () => {
 
       beforeEach(() => {
-        for (let i = 0; i < gearGrid.getMaximumItemsCount(); i++) {
-          gearGrid.items.push(new Item(i));
+        for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
+          gearGrid.items.push(new Item(pos));
         }
       });
 
