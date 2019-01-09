@@ -39,4 +39,22 @@ export class FulfilledAffinites {
 
   }
 
+  /**
+   * Increments the current affinity for the given color by 1.
+   * @param color the color for which to increment the affinity.
+   */
+  incrementAffinity(color: AffinityColor): void {
+    switch (color) {
+      case AffinityColor.Blue:
+        this.blue++;
+        break;
+      case AffinityColor.Green:
+        this.green++;
+        break;
+      case AffinityColor.Red:
+        this.red++;
+        break;
+    }
+  }
+
 }

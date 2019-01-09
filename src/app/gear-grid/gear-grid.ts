@@ -1,5 +1,4 @@
 import {FulfilledAffinites, Item} from './item';
-import {AffinityColor} from './affinity-color';
 
 /**
  * Represents a rectangular gear grid which holds gear items. The size represents the the eddge length of the grid.
@@ -87,40 +86,26 @@ export class GearGrid {
 
       const top = this.getTop(position);
       if (top && self.topAffinity === top.bottomAffinity) {
-        this.incrementAffinity(fulfilledAffinites, self.topAffinity);
+        fulfilledAffinites.incrementAffinity(self.topAffinity);
       }
 
       const left = this.getLeft(position);
       if (left && self.leftAffinity === left.rightAffinity) {
-        this.incrementAffinity(fulfilledAffinites, self.leftAffinity);
+        fulfilledAffinites.incrementAffinity(self.leftAffinity);
       }
 
       const right = this.getRight(position);
       if (right && self.rightAffinity === right.leftAffinity) {
-        this.incrementAffinity(fulfilledAffinites, self.rightAffinity);
+        fulfilledAffinites.incrementAffinity(self.rightAffinity);
       }
 
       const bottom = this.getBottom(position);
       if (bottom && self.bottomAffinity === bottom.topAffinity) {
-        this.incrementAffinity(fulfilledAffinites, self.bottomAffinity);
+        fulfilledAffinites.incrementAffinity(self.bottomAffinity);
       }
     }
 
     return fulfilledAffinites;
-  }
-
-  private incrementAffinity(fulfilledAffinites: FulfilledAffinites, color: AffinityColor): void {
-    switch (color) {
-      case AffinityColor.Blue:
-        fulfilledAffinites.blue++;
-        break;
-      case AffinityColor.Green:
-        fulfilledAffinites.green++;
-        break;
-      case AffinityColor.Red:
-        fulfilledAffinites.red++;
-        break;
-    }
   }
 
   getAllRelevantCellPositionsForNeighbourAffinity(): number[] {
