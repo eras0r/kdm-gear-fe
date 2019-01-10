@@ -573,31 +573,21 @@ describe('Gear Grid', () => {
 
     });
 
-    describe('getAllRelevantCellPositionsForNeighbourAffinity()', () => {
+    describe('needsNeighbourAffinityCalculation()', () => {
 
-      it('should return all positions which are relevant for the affinity neighbour calculation', () => {
-        const relevantCellIds = gearGrid.getAllRelevantCellPositionsForNeighbourAffinity();
-
-        expect(relevantCellIds.length).toEqual(4);
-        expect(relevantCellIds[0]).toBe(1);
-        expect(relevantCellIds[1]).toBe(3);
-        expect(relevantCellIds[2]).toBe(5);
-        expect(relevantCellIds[3]).toBe(7);
+      it('should return true for all odd positions', () => {
+        expect(gearGrid.needsNeighbourAffinityCalculation(1)).toBe(true);
+        expect(gearGrid.needsNeighbourAffinityCalculation(3)).toBe(true);
+        expect(gearGrid.needsNeighbourAffinityCalculation(5)).toBe(true);
+        expect(gearGrid.needsNeighbourAffinityCalculation(7)).toBe(true);
       });
 
-    });
-
-    describe('getAllNonRelevantCellPositionsForNeighbourAffinity()', () => {
-
-      it('should return all positions which are not relevant for the affinity neighbour calculation', () => {
-        const relevantCellIds = gearGrid.getAllNonRelevantCellPositionsForNeighbourAffinity();
-
-        expect(relevantCellIds.length).toEqual(5);
-        expect(relevantCellIds[0]).toBe(0);
-        expect(relevantCellIds[1]).toBe(2);
-        expect(relevantCellIds[2]).toBe(4);
-        expect(relevantCellIds[3]).toBe(6);
-        expect(relevantCellIds[4]).toBe(8);
+      it('should return false for all even positions', () => {
+        expect(gearGrid.needsNeighbourAffinityCalculation(0)).toBe(false);
+        expect(gearGrid.needsNeighbourAffinityCalculation(2)).toBe(false);
+        expect(gearGrid.needsNeighbourAffinityCalculation(4)).toBe(false);
+        expect(gearGrid.needsNeighbourAffinityCalculation(6)).toBe(false);
+        expect(gearGrid.needsNeighbourAffinityCalculation(8)).toBe(false);
       });
 
     });
@@ -648,39 +638,42 @@ describe('Gear Grid', () => {
 
     });
 
-    describe('getAllRelevantCellsForNeighbourAffinity()', () => {
+    describe('needsNeighbourAffinityCalculation()', () => {
 
-      it('should return all positions which are relevant for the affinity neighbour calculation', () => {
-        const relevantCellIds = gearGrid.getAllRelevantCellPositionsForNeighbourAffinity();
+      describe('even rows', () => {
 
-        expect(relevantCellIds.length).toEqual(8);
-        expect(relevantCellIds[0]).toBe(1);
-        expect(relevantCellIds[1]).toBe(3);
-        expect(relevantCellIds[2]).toBe(4);
-        expect(relevantCellIds[3]).toBe(6);
-        expect(relevantCellIds[4]).toBe(9);
-        expect(relevantCellIds[5]).toBe(11);
-        expect(relevantCellIds[6]).toBe(12);
-        expect(relevantCellIds[7]).toBe(14);
+        it('should return false for all even positions', () => {
+          expect(gearGrid.needsNeighbourAffinityCalculation(0)).toBe(false);
+          expect(gearGrid.needsNeighbourAffinityCalculation(2)).toBe(false);
+          expect(gearGrid.needsNeighbourAffinityCalculation(8)).toBe(false);
+          expect(gearGrid.needsNeighbourAffinityCalculation(10)).toBe(false);
+        });
+
+        it('should return true for all even positions', () => {
+          expect(gearGrid.needsNeighbourAffinityCalculation(1)).toBe(true);
+          expect(gearGrid.needsNeighbourAffinityCalculation(3)).toBe(true);
+          expect(gearGrid.needsNeighbourAffinityCalculation(9)).toBe(true);
+          expect(gearGrid.needsNeighbourAffinityCalculation(11)).toBe(true);
+        });
+
       });
 
-    });
+      describe('odd rows', () => {
 
-    describe('getAllNonRelevantCellPositionsForNeighbourAffinity()', () => {
+        it('should return true for all even positions', () => {
+          expect(gearGrid.needsNeighbourAffinityCalculation(4)).toBe(true);
+          expect(gearGrid.needsNeighbourAffinityCalculation(6)).toBe(true);
+          expect(gearGrid.needsNeighbourAffinityCalculation(12)).toBe(true);
+          expect(gearGrid.needsNeighbourAffinityCalculation(14)).toBe(true);
+        });
 
-      it('should return all positions which are not relevant for the affinity neighbour calculation', () => {
-        const relevantCellIds = gearGrid.getAllNonRelevantCellPositionsForNeighbourAffinity();
+        it('should return false for all even positions', () => {
+          expect(gearGrid.needsNeighbourAffinityCalculation(5)).toBe(false);
+          expect(gearGrid.needsNeighbourAffinityCalculation(7)).toBe(false);
+          expect(gearGrid.needsNeighbourAffinityCalculation(13)).toBe(false);
+          expect(gearGrid.needsNeighbourAffinityCalculation(15)).toBe(false);
+        });
 
-        expect(relevantCellIds.length).toEqual(8);
-
-        expect(relevantCellIds[0]).toBe(0);
-        expect(relevantCellIds[1]).toBe(2);
-        expect(relevantCellIds[2]).toBe(5);
-        expect(relevantCellIds[3]).toBe(7);
-        expect(relevantCellIds[4]).toBe(8);
-        expect(relevantCellIds[5]).toBe(10);
-        expect(relevantCellIds[6]).toBe(13);
-        expect(relevantCellIds[7]).toBe(15);
       });
 
     });
