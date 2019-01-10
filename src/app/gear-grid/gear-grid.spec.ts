@@ -444,12 +444,12 @@ describe('Gear Grid', () => {
         gearGrid = getTestGridWithItems();
       });
 
-      describe('getAffinitiesForCell()', () => {
+      describe('calculateAffinitiesForCell()', () => {
 
         describe('empty gear positions', () => {
 
           it('should return undefined', () => {
-            expect(gearGrid.getAffinitiesForCell(0)).toBeUndefined();
+            expect(gearGrid.calculateAffinitiesForCell(0)).toBeUndefined();
           });
 
         });
@@ -457,7 +457,7 @@ describe('Gear Grid', () => {
         describe('north item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(1);
+            const affinities = gearGrid.calculateAffinitiesForCell(1);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(0);
             expect(affinities.green).toEqual(0);
@@ -469,7 +469,7 @@ describe('Gear Grid', () => {
         describe('north east item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(2);
+            const affinities = gearGrid.calculateAffinitiesForCell(2);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(0);
             expect(affinities.green).toEqual(0);
@@ -481,7 +481,7 @@ describe('Gear Grid', () => {
         describe('west item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(3);
+            const affinities = gearGrid.calculateAffinitiesForCell(3);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(0);
             expect(affinities.green).toEqual(0);
@@ -493,7 +493,7 @@ describe('Gear Grid', () => {
         describe('east item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(5);
+            const affinities = gearGrid.calculateAffinitiesForCell(5);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(2);
             expect(affinities.green).toEqual(0);
@@ -505,7 +505,7 @@ describe('Gear Grid', () => {
         describe('center item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(4);
+            const affinities = gearGrid.calculateAffinitiesForCell(4);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(1);
             expect(affinities.green).toEqual(1);
@@ -517,7 +517,7 @@ describe('Gear Grid', () => {
         describe('south west item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(6);
+            const affinities = gearGrid.calculateAffinitiesForCell(6);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(0);
             expect(affinities.green).toEqual(1);
@@ -529,7 +529,7 @@ describe('Gear Grid', () => {
         describe('south item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(7);
+            const affinities = gearGrid.calculateAffinitiesForCell(7);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(0);
             expect(affinities.green).toEqual(3);
@@ -541,7 +541,7 @@ describe('Gear Grid', () => {
         describe('south east item', () => {
 
           it('should return correct affinities', () => {
-            const affinities = gearGrid.getAffinitiesForCell(8);
+            const affinities = gearGrid.calculateAffinitiesForCell(8);
             expect(affinities).toBeDefined();
             expect(affinities.blue).toEqual(0);
             expect(affinities.green).toEqual(1);
@@ -552,10 +552,10 @@ describe('Gear Grid', () => {
 
       });
 
-      describe('getAffinitiesForGrid()', () => {
+      describe('calculateAffinitiesForGrid()', () => {
 
         it('should have the proper affinities', () => {
-          const gridAffinities = gearGrid.getAffinitiesForGrid();
+          const gridAffinities = gearGrid.calculateAffinitiesForGrid();
           expect(gridAffinities.blue).toEqual(2);
           expect(gridAffinities.green).toEqual(3);
           expect(gridAffinities.red).toEqual(5);

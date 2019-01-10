@@ -71,10 +71,11 @@ export class GearGrid {
   }
 
   /**
-   * Calculates the fulfilled affinites for the given cell.
+   * Calculates the fulfilled affinities for the given cell.
    * @param position the position of the cell.
+   * @param calculateNeighbourAffinities whether to calculate the neighbour affinities or not.
    */
-  getAffinitiesForCell(position: number): FulfilledAffinites {
+  calculateAffinitiesForCell(position: number, calculateNeighbourAffinities = true): FulfilledAffinites {
     let fulfilledAffinites: FulfilledAffinites;
 
     const self = this.getItem(position);
@@ -84,24 +85,26 @@ export class GearGrid {
       // initialize fulfilled affinities with self provided affinities if any
       fulfilledAffinites = self.providedAffinities || new FulfilledAffinites();
 
-      const top = this.getTop(position);
-      if (top && self.topAffinity === top.bottomAffinity) {
-        fulfilledAffinites.incrementAffinity(self.topAffinity);
-      }
+      if (calculateNeighbourAffinities) {
+        const top = this.getTop(position);
+        if (top && self.topAffinity === top.bottomAffinity) {
+          fulfilledAffinites.incrementAffinity(self.topAffinity);
+        }
 
-      const left = this.getLeft(position);
-      if (left && self.leftAffinity === left.rightAffinity) {
-        fulfilledAffinites.incrementAffinity(self.leftAffinity);
-      }
+        const left = this.getLeft(position);
+        if (left && self.leftAffinity === left.rightAffinity) {
+          fulfilledAffinites.incrementAffinity(self.leftAffinity);
+        }
 
-      const right = this.getRight(position);
-      if (right && self.rightAffinity === right.leftAffinity) {
-        fulfilledAffinites.incrementAffinity(self.rightAffinity);
-      }
+        const right = this.getRight(position);
+        if (right && self.rightAffinity === right.leftAffinity) {
+          fulfilledAffinites.incrementAffinity(self.rightAffinity);
+        }
 
-      const bottom = this.getBottom(position);
-      if (bottom && self.bottomAffinity === bottom.topAffinity) {
-        fulfilledAffinites.incrementAffinity(self.bottomAffinity);
+        const bottom = this.getBottom(position);
+        if (bottom && self.bottomAffinity === bottom.topAffinity) {
+          fulfilledAffinites.incrementAffinity(self.bottomAffinity);
+        }
       }
     }
 
@@ -111,25 +114,45 @@ export class GearGrid {
   /**
    * Gets the fulfilled affinities for the whole grid.
    */
-  getAffinitiesForGrid(): FulfilledAffinites {
+  calculateAffinitiesForGrid(): FulfilledAffinites {
     const fulfilledAffinites = new FulfilledAffinites();
 
-    this.getAllNonRelevantCellPositionsForNeighbourAffinity()
-      .map((pos) => this.getItem(pos)) // get items from positions
-      .filter((item) => item) // filter empty items
-      .map((item) => item.providedAffinities) // extract provided affinities
-      .forEach((affinities) => fulfilledAffinites.add(affinities));
-
-    this.getAllRelevantCellPositionsForNeighbourAffinity()
-      .map((pos) => this.getAffinitiesForCell(pos))
+    this.items.map((item, position) => {
+      const needsNeighboutAffinityCalculation = this.needsNeighbourAffinityCalculation(position);
+      return this.calculateAffinitiesForCell(position, needsNeighboutAffinityCalculation);
+    })
       .forEach((affinities) => fulfilledAffinites.add(affinities));
 
     return fulfilledAffinites;
   }
 
+  needsNeighbourAffinityCalculation(position: number): boolean {
+    let neesNeighboutAffinityCalculation = false;
+
+    if (this.size % 2 === 0) {
+      // gear grid has an even size
+
+      if (Math.floor(position / this.size) % 2 === 0) {
+        // even row -> add all odd columns
+        neesNeighboutAffinityCalculation = position % 2 === 1;
+      } else {
+        // odd row -> add all even columns
+        neesNeighboutAffinityCalculation = position % 2 === 0;
+      }
+
+    } else {
+      // gear grid has an odd size -> use odd positions
+      neesNeighboutAffinityCalculation = position % 2 === 1;
+    }
+
+    return neesNeighboutAffinityCalculation;
+  }
+
   /**
    * Gets all relevant positions for the neighbour affinity calculations.
+   * @deprecated
    */
+  // TODO remove method
   getAllRelevantCellPositionsForNeighbourAffinity(): number[] {
     let relevantPositions: number[] = [];
 
@@ -166,7 +189,9 @@ export class GearGrid {
   /**
    * Gets all non relevant positions for the neighbour affinity calculations.
    * Those items are needed because they might provide an affinity by an item directly (without needing a neighbour).
+   * @deprecated
    */
+  // TODO remove method
   getAllNonRelevantCellPositionsForNeighbourAffinity(): number[] {
     const relevantPositions = this.getAllRelevantCellPositionsForNeighbourAffinity();
     const nonRelevantPositions = [];
