@@ -126,26 +126,29 @@ export class GearGrid {
     return fulfilledAffinites;
   }
 
+  /**
+   * Determines whether the given position needs neigbour affinity calculation or not.
+   * This is used when calculating the affinity for the whole grid.
+   * @param position the position.
+   */
   needsNeighbourAffinityCalculation(position: number): boolean {
-    let neesNeighboutAffinityCalculation = false;
+    let needsNeighboutAffinityCalculation = false;
 
     if (this.size % 2 === 0) {
       // gear grid has an even size
-
       if (Math.floor(position / this.size) % 2 === 0) {
-        // even row -> add all odd columns
-        neesNeighboutAffinityCalculation = position % 2 === 1;
+        // even row -> odd columns
+        needsNeighboutAffinityCalculation = position % 2 === 1;
       } else {
-        // odd row -> add all even columns
-        neesNeighboutAffinityCalculation = position % 2 === 0;
+        // odd row -> even columns
+        needsNeighboutAffinityCalculation = position % 2 === 0;
       }
-
     } else {
-      // gear grid has an odd size -> use odd positions
-      neesNeighboutAffinityCalculation = position % 2 === 1;
+      // gear grid has an odd size -> odd positions
+      needsNeighboutAffinityCalculation = position % 2 === 1;
     }
 
-    return neesNeighboutAffinityCalculation;
+    return needsNeighboutAffinityCalculation;
   }
 
 }
