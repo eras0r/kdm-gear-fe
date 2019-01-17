@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import * as fromStore from '../../reducers/gear-grid.reducer';
 import {AddItem} from '../../actions/gear-grid.actions';
 import {Item} from '../../../gear-grid-logic/item';
 import {Observable} from 'rxjs';
 import {getItems} from '../../reducers/gear-grid.selectors';
+import {AppState} from '../../../reducers';
 
 @Component({
   selector: 'kdm-gear-grid-container',
@@ -16,13 +16,12 @@ export class GearGridContainerComponent implements OnInit {
 
   items$: Observable<Item[]>;
 
-  constructor(private store: Store<fromStore.GearGridFeatureState>) {
+  constructor(private store: Store<AppState>) {
   }
 
   ngOnInit() {
     // TODO proper selector
-    // TODO proper selector
-    // this.items$ = this.store.pipe(select(getItems));
+    this.items$ = this.store.pipe(select(getItems));
   }
 
   addItem(): void {
