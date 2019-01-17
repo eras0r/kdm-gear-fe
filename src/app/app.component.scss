@@ -1,0 +1,41 @@
+@import '~@angular/material/theming';
+
+// Define a mixin that accepts a theme and outputs the theme-specific styles.
+@mixin app-component-theme($theme) {
+  // Extract the palettes you need from the theme definition.
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+
+
+  // Define any styles affected by the theme.
+  .like {
+    // Use mat-color to extract individual colors a palette.
+    background-color: mat-color($primary, darker);
+    color: mat-color($primary, lighter);
+  }
+
+  .share {
+    background-color: mat-color($accent, darker);
+    color: mat-color($accent, lighter);
+  }
+
+  //$test-palette: $mat-light-blue;
+  $test-palette: $mat-teal;
+
+  .share-1 {
+    // palette default: default = 500, lighter = 100, darker = 700
+    $foo: mat-palette($test-palette);
+
+    background-color: mat-color($foo, darker);
+    color: mat-color($foo, lighter);
+  }
+
+  .share-2 {
+    $foo: mat-palette($test-palette, 500, 100, 900); // override defaults for default, lighter and darker
+
+    background-color: mat-color($foo, darker);
+    color: mat-color($foo, lighter);
+  }
+
+}
