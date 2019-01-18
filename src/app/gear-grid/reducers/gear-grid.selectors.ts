@@ -15,4 +15,3 @@ export const getItems = createSelector(
   selectGearGridFeature,
   (state: GearGridFeatureState) => state.gearGrid.items
 );
-

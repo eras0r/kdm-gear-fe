@@ -13,7 +13,6 @@ import {AppState} from '../../../reducers';
 })
 export class GearGridContainerComponent implements OnInit {
 
-
   items$: Observable<Item[]>;
 
   // TODO check why Store<GearGridFeatureState> does not work
@@ -21,7 +20,6 @@ export class GearGridContainerComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO proper selector
     this.items$ = this.store.pipe(select(getItems));
   }
 
