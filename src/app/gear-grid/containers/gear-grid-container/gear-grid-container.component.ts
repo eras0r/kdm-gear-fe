@@ -4,7 +4,7 @@ import {AddItem} from '../../actions/gear-grid.actions';
 import {Item} from '../../../gear-grid-logic/item';
 import {Observable} from 'rxjs';
 import {getItems} from '../../reducers/gear-grid.selectors';
-import {AppState} from '../../../reducers';
+import {GearGridFeatureState} from '../../reducers/gear-grid.reducer';
 
 @Component({
   selector: 'kdm-gear-grid-container',
@@ -16,7 +16,7 @@ export class GearGridContainerComponent implements OnInit {
   items$: Observable<Item[]>;
 
   // TODO check why Store<GearGridFeatureState> does not work
-  constructor(private store: Store<AppState>) {
+  constructor(private store: Store<GearGridFeatureState>) {
   }
 
   ngOnInit() {

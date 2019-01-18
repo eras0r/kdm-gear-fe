@@ -1,7 +1,6 @@
 import {GearGridActions, GearGridActionTypes} from '../actions/gear-grid.actions';
 import {GearGrid} from '../../gear-grid-logic/gear-grid';
 import {createFeatureSelector} from '@ngrx/store';
-import {AppState} from '../../reducers';
 
 export const FEATURE_NAME = 'gearGrid';
 
@@ -36,6 +35,6 @@ export function reducer(state = initialState, action: GearGridActions): GearGrid
   }
 }
 
-export const selectGearGridFeature = createFeatureSelector<AppState, GearGridFeatureState>(
+export const selectGearGridFeature = createFeatureSelector<GearGridFeatureState>(
   FEATURE_NAME
 );
