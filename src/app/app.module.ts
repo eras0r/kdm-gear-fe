@@ -9,6 +9,7 @@ import {environment} from '../environments/environment';
 import {EffectsModule} from '@ngrx/effects';
 import {AppEffects} from './app.effects';
 import {GearGridModule} from './gear-grid/gear-grid.module';
+import {ItemsModule} from './items/items.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import {GearGridModule} from './gear-grid/gear-grid.module';
   imports: [
     BrowserModule,
     GearGridModule,
+    ItemsModule,
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects])
