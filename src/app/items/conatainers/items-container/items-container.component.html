@@ -1,6 +1,1 @@
-<p>
-  items-container works!
-</p>
-
-
-all items: {{items$ | async | json}}
+<kdm-items [items]="items$ | async" (add)="addItem($event)"></kdm-items>
