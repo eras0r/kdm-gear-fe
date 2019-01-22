@@ -15,7 +15,6 @@ export class GearGridContainerComponent implements OnInit {
 
   items$: Observable<Item[]>;
 
-  // TODO check why Store<GearGridFeatureState> does not work
   constructor(private store: Store<GearGridFeatureState>) {
   }
 
