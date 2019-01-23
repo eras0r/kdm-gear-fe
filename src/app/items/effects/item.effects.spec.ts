@@ -1,8 +1,9 @@
-import { TestBed, inject } from '@angular/core/testing';
-import { provideMockActions } from '@ngrx/effects/testing';
-import { Observable } from 'rxjs';
+import {TestBed} from '@angular/core/testing';
+import {provideMockActions} from '@ngrx/effects/testing';
+import {Observable} from 'rxjs';
 
-import { ItemEffects } from './item.effects';
+import {ItemEffects} from './item.effects';
+import {ItemsService} from '../services/items.service';
 
 describe('ItemEffects', () => {
   let actions$: Observable<any>;
@@ -12,6 +13,7 @@ describe('ItemEffects', () => {
     TestBed.configureTestingModule({
       providers: [
         ItemEffects,
+        ItemsService,
         provideMockActions(() => actions$)
       ]
     });
