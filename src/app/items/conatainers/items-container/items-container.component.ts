@@ -17,10 +17,10 @@ export class ItemsContainerComponent implements OnInit {
   items$: Observable<Item[]>;
 
   constructor(private store: Store<ItemsFeatureState>) {
-    this.items$ = this.store.pipe(select(getItems));
   }
 
   ngOnInit() {
+    this.items$ = this.store.pipe(select(getItems));
     this.store.dispatch(new RetrieveItems());
   }
 
