@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {Actions, Effect, ofType} from '@ngrx/effects';
 import {ItemActionTypes, RetrieveItems, RetrieveItemsError, RetrieveItemsSuccess} from '../actions/item.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
-import {ItemsService} from '../items.service';
+import {ItemsService} from '../services/items.service';
 import {of} from 'rxjs';
 
 @Injectable()

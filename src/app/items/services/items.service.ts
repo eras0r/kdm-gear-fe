@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable, of} from 'rxjs';
-import {Item} from '../gear-grid-logic/item';
+import {Item} from '../../gear-grid-logic/item';
 
 @Injectable()
 export class ItemsService {

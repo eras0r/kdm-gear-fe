@@ -4,7 +4,7 @@ import {StoreModule} from '@ngrx/store';
 import * as fromItem from './reducers/item.reducer';
 import {EffectsModule} from '@ngrx/effects';
 import {ItemEffects} from './effects/item.effects';
-import {ItemsService} from './items.service';
+import {ItemsService} from './services/items.service';
 import {ItemsContainerComponent} from './conatainers/items-container/items-container.component';
 import {ItemsComponent} from './components/items/items.component';
 import {FormsModule} from '@angular/forms';
