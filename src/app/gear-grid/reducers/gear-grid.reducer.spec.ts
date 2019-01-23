@@ -1,4 +1,4 @@
-import { reducer, initialState } from './gear-grid.reducer';
+import {reducer, initialState} from './gear-grid.reducer';
 
 describe('GearGrid Reducer', () => {
   describe('an unknown action', () => {
