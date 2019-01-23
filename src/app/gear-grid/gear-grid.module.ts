@@ -6,7 +6,7 @@ import {EffectsModule} from '@ngrx/effects';
 import {GearGridEffects} from './effects/gear-grid.effects';
 import {GearGridContainerComponent} from './containers/gear-grid-container/gear-grid-container.component';
 import {GearItemComponent} from './components/gear-item/gear-item.component';
-import { GearGridComponent } from './components/gear-grid/gear-grid.component';
+import {GearGridComponent} from './components/gear-grid/gear-grid.component';
 
 @NgModule({
   declarations: [
