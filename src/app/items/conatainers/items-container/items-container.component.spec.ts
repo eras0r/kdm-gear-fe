@@ -1,17 +1,25 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { ItemsContainerComponent } from './items-container.component';
-import { Store, StoreModule } from '@ngrx/store';
+import {ItemsContainerComponent} from './items-container.component';
+import {Store, StoreModule} from '@ngrx/store';
+import {ItemsComponent} from '../../components/items/items.component';
+import {FormsModule} from '@angular/forms';
 
 describe('ItemsContainerComponent', () => {
   let component: ItemsContainerComponent;
   let fixture: ComponentFixture<ItemsContainerComponent>;
   let store: Store<any>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ StoreModule.forRoot({}) ],
-      declarations: [ ItemsContainerComponent ]
+      imports: [
+        FormsModule,
+        StoreModule.forRoot({})
+      ],
+      declarations: [
+        ItemsContainerComponent,
+        ItemsComponent
+      ]
     });
 
     await TestBed.compileComponents();
