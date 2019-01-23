@@ -1,18 +1,23 @@
 import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {GearGridContainerComponent} from './gear-grid-container.component';
-import {Store, StoreModule} from '@ngrx/store';
+import {Store} from '@ngrx/store';
 import {GearGridComponent} from '../../components/gear-grid/gear-grid.component';
 import {GearItemComponent} from '../../components/gear-item/gear-item.component';
+import {MockStore, TestingModule} from '../../../../testing/utils';
+import {GearGridFeatureState} from '../../reducers/gear-grid.reducer';
+import {GearGrid} from '../../../gear-grid-logic/gear-grid';
 
 describe('GearGridContainerComponent', () => {
   let component: GearGridContainerComponent;
   let fixture: ComponentFixture<GearGridContainerComponent>;
-  let store: Store<any>;
+  let store: MockStore<GearGridFeatureState>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [StoreModule.forRoot({})],
+      imports: [
+        TestingModule
+      ],
       declarations: [
         GearGridContainerComponent,
         GearGridComponent,
@@ -21,14 +26,14 @@ describe('GearGridContainerComponent', () => {
     });
 
     await TestBed.compileComponents();
-  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(GearGridContainerComponent);
-    component = fixture.componentInstance;
     store = TestBed.get(Store);
+    store.setState(createMockState());
 
     spyOn(store, 'dispatch').and.callThrough();
+
+    fixture = TestBed.createComponent(GearGridContainerComponent);
+    component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
@@ -36,3 +41,9 @@ describe('GearGridContainerComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+
+function createMockState(): GearGridFeatureState {
+  return {
+    gearGrid: new GearGrid(3)
+  };
+}
