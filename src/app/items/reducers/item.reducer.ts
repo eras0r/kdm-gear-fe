@@ -2,7 +2,7 @@ import {ItemActions, ItemActionTypes} from '../actions/item.actions';
 import {Item} from '../../gear-grid-logic/item';
 import {createFeatureSelector} from '@ngrx/store';
 
-export const FEATURE_NAME = 'item';
+export const FEATURE_NAME = 'items';
 
 export interface ItemsFeatureState {
   items: Item[];
