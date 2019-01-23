@@ -1,6 +1,7 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { GearGridComponent } from './gear-grid.component';
+import {GearGridComponent} from './gear-grid.component';
+import {GearItemComponent} from '../gear-item/gear-item.component';
 
 describe('GearGridComponent', () => {
   let component: GearGridComponent;
@@ -8,9 +9,12 @@ describe('GearGridComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GearGridComponent ]
+      declarations: [
+        GearGridComponent,
+        GearItemComponent
+      ]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
