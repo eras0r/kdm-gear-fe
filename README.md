@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/eras0r/kdm-gear-fe.svg?branch=master)](https://travis-ci.com/eras0r/kdm-gear-fe)
+
 # KdmGear
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
