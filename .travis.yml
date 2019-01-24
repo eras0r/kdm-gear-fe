@@ -10,3 +10,7 @@ install:
   - npm ci
 script:
   - npm run ci
+notifications:
+  email: false
+  slack:
+    secure: MJtmV0K5Egyy66q1nETgTOgstX0Byu+Uo0WwBOgYwp5hOY6kv1d7nUBey125W0JmC/Zg0QAUUiqYwsVMxcdwOnb2fY2X1TpII+9mNUpvBnwuEPpVWkfO+nCB6o8OQFUKLjZw+EcWL7cFk7cVeG3Frhrchn6NKp+IovJy2uumEGBOpqFtaMRYUGCaBqrMLHWAkEJi9GQm7u+rEUUozvZ1bumXsO73hsc3Sl9xGXWJVTojRAR8fOSTh6lGeyC92GdS8kQR8akBjjaDRLni3ONGyzOL2x85WKIddp5Y4mVjplnuCt/RemGiDwcUr+YMEvE0H/UMS8Z4uw9wLlidsqmCmb4QqBG0ZfKtED4cqDd/kjpbIO/CtIjWqS/lP+DlbAPkqWCO1pN1ssm7x5Z4G2VZQvEC5CclbNgVwhOVTaSwkgrGVCPEjRxEhSqGSvxcAHc5JGwTV73Tb22dNuqvonRfd6CZlYYymksJ0/duECG43srxq5sKVEuWTD+YyVdnZPyG7KcGY4gr/DjIb5Y3R1qsX/WHMxo8psU01pTDAVZ3zynWA7GKGin4m4+7dfzJKZGHkJOpQEA2DUZNb/gmcTfrJRwcMVYXGQyfow+/XT6GU4pH3dquG/cRW4Xhgk/3/KQypltodN3u4iA7TSjzCoE2+VPAaBLDre4HfdMB/eFIOjY=
