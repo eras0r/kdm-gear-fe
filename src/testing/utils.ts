@@ -18,7 +18,6 @@ export class MockStore<T> extends Store<T> {
   }
 
   setState(nextState: T) {
-    console.log('next state: ', nextState);
     this.stateSubject.next(nextState);
   }
 }
