@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "clean": "rimraf ./dist/",
     "test": "ng test",
+    "ci": "npm run clean && ng lint && ng test --watch=false --browsers=ChromeHeadless && npm run build",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -47,6 +49,7 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "protractor": "~5.4.0",
+    "rimraf": "^2.6.3",
     "ts-node": "~7.0.0",
     "tslint": "~5.12.0",
     "typescript": "~3.2.2"
