@@ -6,6 +6,8 @@ import {ItemEffects} from './item.effects';
 import {ItemsService} from '../services/items.service';
 
 describe('ItemEffects', () => {
+  // TODO fix lint error as soon as test makes sense
+  // tslint:disable-next-line:prefer-const
   let actions$: Observable<any>;
   let effects: ItemEffects;
 
