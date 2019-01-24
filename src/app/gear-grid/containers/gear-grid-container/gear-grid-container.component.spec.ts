@@ -5,13 +5,15 @@ import {Store} from '@ngrx/store';
 import {GearGridComponent} from '../../components/gear-grid/gear-grid.component';
 import {GearItemComponent} from '../../components/gear-item/gear-item.component';
 import {MockStore, TestingModule} from '../../../../testing/utils';
-import {GearGridFeatureState} from '../../reducers/gear-grid.reducer';
 import {GearGrid} from '../../../gear-grid-logic/gear-grid';
+import {AppState} from '../../../reducers';
+
+type GearGridFeatureStateSlice = Pick<AppState, 'gearGrid'>;
 
 describe('GearGridContainerComponent', () => {
   let component: GearGridContainerComponent;
   let fixture: ComponentFixture<GearGridContainerComponent>;
-  let store: MockStore<GearGridFeatureState>;
+  let store: MockStore<GearGridFeatureStateSlice>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -42,8 +44,10 @@ describe('GearGridContainerComponent', () => {
   });
 });
 
-function createMockState(): GearGridFeatureState {
+function createMockState(): GearGridFeatureStateSlice {
   return {
-    gearGrid: new GearGrid(3)
+    gearGrid: {
+      gearGrid: new GearGrid(3),
+    }
   };
 }

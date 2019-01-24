@@ -4,14 +4,15 @@ import {ItemsContainerComponent} from './items-container.component';
 import {Store} from '@ngrx/store';
 import {ItemsComponent} from '../../components/items/items.component';
 import {FormsModule} from '@angular/forms';
-import {ItemsFeatureState} from '../../reducers/item.reducer';
 import {MockStore, TestingModule} from '../../../../testing/utils';
+import {AppState} from '../../../reducers';
 
+type ItemsFeatureStateSlice = Pick<AppState, 'items'>;
 
 describe('ItemsContainerComponent', () => {
   let component: ItemsContainerComponent;
   let fixture: ComponentFixture<ItemsContainerComponent>;
-  let store: MockStore<ItemsFeatureState>; // TODO consider switching to MockStore provided by ngrx itself
+  let store: MockStore<ItemsFeatureStateSlice>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
@@ -37,15 +38,16 @@ describe('ItemsContainerComponent', () => {
     fixture.detectChanges();
   });
 
-
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
 });
 
-function createMockState(): ItemsFeatureState {
+function createMockState(): ItemsFeatureStateSlice {
   return {
-    items: []
+    items: {
+      items: []
+    }
   };
 }
