@@ -1,0 +1,12 @@
+language: node_js
+node_js:
+  - node # latest stable node version
+dist: trusty
+addons:
+  chrome: stable
+before_install:
+  - npm install -g @angular/cli
+install:
+  - npm ci
+script:
+  - npm run ci
