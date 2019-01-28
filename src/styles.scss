@@ -1,3 +1,10 @@
+@import 'styles-variables';
+// import bootstrap
+//@import '../node_modules/bootstrap/scss/bootstrap'; // imports complete bootstrap
+// imports only bootstraps grid system
+@import '../node_modules/bootstrap/scss/bootstrap-reboot';
+@import '../node_modules/bootstrap/scss/bootstrap-grid';
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
