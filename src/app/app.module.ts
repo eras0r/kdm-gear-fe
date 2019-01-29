@@ -12,10 +12,13 @@ import {metaReducers, reducers} from './reducers';
 import {environment} from '../environments/environment';
 import {GearGridModule} from './gear-grid/gear-grid.module';
 import {ItemsModule} from './items/items.module';
+import {AppRoutingModule} from './app-routing.module';
+import {GearGridPageComponent} from './containers/gear-grid-page/gear-grid-page.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GearGridPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -23,9 +26,13 @@ import {ItemsModule} from './items/items.module';
     MaterialModule,
     GearGridModule,
     ItemsModule,
+
+    // TODO use CoreModule to init these
     StoreModule.forRoot(reducers, {metaReducers}),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects])
+    EffectsModule.forRoot([AppEffects]),
+
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
