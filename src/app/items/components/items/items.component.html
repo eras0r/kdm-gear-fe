@@ -1,11 +1,14 @@
-<div class="row col-sm-12">
-  <select id="item" [(ngModel)]="selectedItem">
-    <option *ngFor="let item of items" [ngValue]="item">{{item.name}}</option>
-  </select>
-</div>
+<div class="container-fluid">
 
-<div class="row">
-  <div class="col-sm-12">
-    <button (click)="addItem()">add item</button>
+  <div class="row col-sm-12">
+    <select id="item" [(ngModel)]="selectedItem">
+      <option *ngFor="let item of items" [ngValue]="item">{{item.name}}</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <button (click)="addItem()">add item</button>
+    </div>
   </div>
 </div>
