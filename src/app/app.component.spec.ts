@@ -7,6 +7,7 @@ import {GearGridComponent} from './gear-grid/components/gear-grid/gear-grid.comp
 import {GearItemComponent} from './gear-grid/components/gear-item/gear-item.component';
 import {MockAppStore, TestingModule} from '../testing/utils';
 import {Store} from '@ngrx/store';
+import {CoreModule} from './core/core.module';
 
 describe('AppComponent', () => {
 
@@ -18,6 +19,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
+        CoreModule,
         TestingModule
       ],
       declarations: [

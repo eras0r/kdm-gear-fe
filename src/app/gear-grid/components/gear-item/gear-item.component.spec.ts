@@ -4,6 +4,7 @@ import {GearItemComponent} from './gear-item.component';
 import {Item} from '../../../gear-grid-logic/item';
 import {By} from '@angular/platform-browser';
 import {TestingModule} from '../../../../testing/utils';
+import {CoreModule} from '../../../core/core.module';
 
 describe('GearItemComponent', () => {
   let component: GearItemComponent;
@@ -18,6 +19,7 @@ describe('GearItemComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
+        CoreModule,
         TestingModule
       ],
       declarations: [GearItemComponent]

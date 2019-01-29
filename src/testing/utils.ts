@@ -6,6 +6,7 @@ import {RouterTestingModule} from '@angular/router/testing';
 import {SharedModule} from '../app/shared/shared.module';
 import {AppState} from '../app/reducers';
 import {GearGrid} from '../app/gear-grid-logic/gear-grid';
+import {CoreModule} from '../app/core/core.module';
 
 @Injectable()
 export class MockStore<T> extends Store<T> {
@@ -62,6 +63,7 @@ export function provideMockStore() {
   imports: [
     NoopAnimationsModule,
     RouterTestingModule,
+    CoreModule,
     SharedModule,
     StoreModule.forRoot({})
   ],

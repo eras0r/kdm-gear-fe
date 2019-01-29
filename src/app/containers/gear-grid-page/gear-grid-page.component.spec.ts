@@ -8,6 +8,7 @@ import {ItemsComponent} from '../../items/components/items/items.component';
 import {GearGridComponent} from '../../gear-grid/components/gear-grid/gear-grid.component';
 import {MockAppStore, TestingModule} from '../../../testing/utils';
 import {GearItemComponent} from '../../gear-grid/components/gear-item/gear-item.component';
+import {CoreModule} from '../../core/core.module';
 
 describe('GearGridPageComponent', () => {
   let component: GearGridPageComponent;
@@ -17,6 +18,7 @@ describe('GearGridPageComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
+        CoreModule,
         TestingModule
       ],
       declarations: [
