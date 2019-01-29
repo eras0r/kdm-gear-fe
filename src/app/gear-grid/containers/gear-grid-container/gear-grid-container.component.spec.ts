@@ -42,6 +42,7 @@ describe('GearGridContainerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
 
 function createMockState(): GearGridFeatureStateSlice {
