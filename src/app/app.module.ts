@@ -12,6 +12,7 @@ import {GearGridModule} from './gear-grid/gear-grid.module';
 import {ItemsModule} from './items/items.module';
 import {AppRoutingModule} from './app-routing.module';
 import {GearGridPageComponent} from './containers/gear-grid-page/gear-grid-page.component';
+import {SharedModule} from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,13 @@ import {GearGridPageComponent} from './containers/gear-grid-page/gear-grid-page.
     GearGridPageComponent,
   ],
   imports: [
+    // angular
     BrowserModule,
+
+    // core and shared
+    SharedModule,
+
+    // features
     GearGridModule,
     ItemsModule,
 
@@ -28,6 +35,7 @@ import {GearGridPageComponent} from './containers/gear-grid-page/gear-grid-page.
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
 
+    // app modules
     AppRoutingModule
   ],
   providers: [],

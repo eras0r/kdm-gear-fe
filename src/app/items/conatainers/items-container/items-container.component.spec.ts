@@ -3,7 +3,6 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {ItemsContainerComponent} from './items-container.component';
 import {Store} from '@ngrx/store';
 import {ItemsComponent} from '../../components/items/items.component';
-import {FormsModule} from '@angular/forms';
 import {MockStore, TestingModule} from '../../../../testing/utils';
 import {AppState} from '../../../reducers';
 
@@ -17,7 +16,6 @@ describe('ItemsContainerComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule,
         TestingModule
       ],
       declarations: [

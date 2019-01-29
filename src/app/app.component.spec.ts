@@ -4,7 +4,6 @@ import {ItemsContainerComponent} from './items/conatainers/items-container/items
 import {GearGridContainerComponent} from './gear-grid/containers/gear-grid-container/gear-grid-container.component';
 import {ItemsComponent} from './items/components/items/items.component';
 import {GearGridComponent} from './gear-grid/components/gear-grid/gear-grid.component';
-import {FormsModule} from '@angular/forms';
 import {GearItemComponent} from './gear-grid/components/gear-item/gear-item.component';
 import {MockStore, TestingModule} from '../testing/utils';
 import {Store} from '@ngrx/store';
@@ -21,7 +20,6 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule,
         TestingModule
       ],
       declarations: [
