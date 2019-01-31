@@ -7,6 +7,7 @@ import {GearItemComponent} from '../../components/gear-item/gear-item.component'
 import {MockStore, TestingModule} from '../../../../testing/utils';
 import {GearGrid} from '../../../gear-grid-logic/gear-grid';
 import {AppState} from '../../../reducers';
+import {CoreModule} from '../../../core/core.module';
 
 type GearGridFeatureStateSlice = Pick<AppState, 'gearGrid'>;
 
@@ -18,6 +19,7 @@ describe('GearGridContainerComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
+        CoreModule,
         TestingModule
       ],
       declarations: [
@@ -42,6 +44,7 @@ describe('GearGridContainerComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
 
 function createMockState(): GearGridFeatureStateSlice {

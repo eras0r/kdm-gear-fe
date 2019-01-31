@@ -1,11 +1,14 @@
-<div class="row col-sm-12">
-  <h2>gear-grid works!</h2>
-</div>
+<div class="container-fluid">
 
-<div class="row col-sm-12">
-  items
-  <pre>{{gearItems | json}}</pre>
-</div>
-<div class="row">
-  <kdm-gear-item *ngFor="let item of items" [item]="item" class="col-sm-4"></kdm-gear-item>
+  <div class="row col-sm-12">
+    <h2>gear-grid works!</h2>
+  </div>
+
+  <div class="row col-sm-12">
+    items
+    <pre>{{gearItems | json}}</pre>
+  </div>
+  <div class="row">
+    <kdm-gear-item *ngFor="let item of items" [item]="item" class="col-sm-4"></kdm-gear-item>
+  </div>
 </div>
