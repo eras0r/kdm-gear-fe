@@ -4,24 +4,22 @@ import {ItemsContainerComponent} from './items/conatainers/items-container/items
 import {GearGridContainerComponent} from './gear-grid/containers/gear-grid-container/gear-grid-container.component';
 import {ItemsComponent} from './items/components/items/items.component';
 import {GearGridComponent} from './gear-grid/components/gear-grid/gear-grid.component';
-import {FormsModule} from '@angular/forms';
 import {GearItemComponent} from './gear-grid/components/gear-item/gear-item.component';
-import {MockStore, TestingModule} from '../testing/utils';
+import {MockAppStore, TestingModule} from '../testing/utils';
 import {Store} from '@ngrx/store';
-import {AppState} from './reducers';
-import {GearGrid} from './gear-grid-logic/gear-grid';
+import {CoreModule} from './core/core.module';
 
 describe('AppComponent', () => {
 
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
   let compiled: any;
-  let store: MockStore<AppState>;
+  let store: MockAppStore;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
       imports: [
-        FormsModule,
+        CoreModule,
         TestingModule
       ],
       declarations: [
@@ -37,7 +35,6 @@ describe('AppComponent', () => {
     await TestBed.compileComponents();
 
     store = TestBed.get(Store);
-    store.setState(createMockState());
 
     spyOn(store, 'dispatch').and.callThrough();
 
@@ -63,14 +60,4 @@ describe('AppComponent', () => {
 
 });
 
-function createMockState(): AppState {
-  return {
-    gearGrid: {
-      gearGrid: new GearGrid(3),
-    },
-    items: {
-      items: []
-    }
-  };
-}
 
