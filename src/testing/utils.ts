@@ -36,10 +36,10 @@ export class MockAppStore extends MockStore<AppState> {
     reducerManager: ReducerManager
   ) {
     super(state$, actionsObserver, reducerManager);
-    this.setState(this.createEmpyAppState());
+    this.setState(this.createEmptyAppState());
   }
 
-  private createEmpyAppState(): AppState {
+  private createEmptyAppState(): AppState {
     return {
       gearGrid: {
         gearGrid: new GearGrid(3),
@@ -55,7 +55,7 @@ export class MockAppStore extends MockStore<AppState> {
 export function provideMockStore() {
   return {
     provide: Store,
-    useClass: MockStore
+    useClass: MockAppStore
   };
 }
 
