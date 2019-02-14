@@ -1,4 +1,26 @@
 <div class="row">
-  <div class="col-sm-4">id: {{item.id}}</div>
-  <div class="col-sm-8">name: {{item.name}}</div>
+  <div class="col-sm-4">0</div>
+  <div class="col-sm-4" [ngClass]="getAffinityColorClass('top')">{{item.topAffinity}}</div>
+  <div class="col-sm-4">0</div>
+</div>
+<div class="row">
+  <div class="col-sm-4" [ngClass]="getAffinityColorClass('left')">{{item.leftAffinity}}</div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-4">id:</div>
+      <div class="col-sm-8">{{item.id}}
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">name:</div>
+      <div class="col-sm-8">{{item.name}}
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4" [ngClass]="getAffinityColorClass('right')">{{item.rightAffinity}}</div>
+</div>
+<div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4" [ngClass]="getAffinityColorClass('bottom')">{{item.bottomAffinity}}</div>
+  <div class="col-sm-4"></div>
 </div>
