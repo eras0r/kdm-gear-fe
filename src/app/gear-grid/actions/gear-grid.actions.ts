@@ -3,19 +3,19 @@ import {Item} from '../../gear-grid-logic/item';
 
 export enum GearGridActionTypes {
   LoadGearGrids = '[GearGrid] Load GearGrids',
-  AddItem = '[GearGrid] AddItem'
+  SetItem = '[GearGrid] SetItem'
 }
 
 export class LoadGearGrids implements Action {
   readonly type = GearGridActionTypes.LoadGearGrids;
 }
 
-export class AddItem implements Action {
-  readonly type = GearGridActionTypes.AddItem;
+export class SetItem implements Action {
+  readonly type = GearGridActionTypes.SetItem;
 
-  constructor(public item: Item) {
+  constructor(public item: Item, public position: number) {
   }
 
 }
 
-export type GearGridActions = LoadGearGrids | AddItem;
+export type GearGridActions = LoadGearGrids | SetItem;

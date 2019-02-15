@@ -17,7 +17,9 @@ export class GearGrid {
   items: Item[] = [];
 
   constructor(public size: number) {
-
+    for (let i = 0; i < this.getMaximumItemsCount(); i++) {
+      this.items.push(null);
+    }
   }
 
   /**

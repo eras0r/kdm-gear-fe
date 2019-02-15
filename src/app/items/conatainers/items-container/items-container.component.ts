@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {Item} from '../../../gear-grid-logic/item';
 import {getItems} from '../../reducers/item.selectors';
 import {RetrieveItems} from '../../actions/item.actions';
-import {AddItem} from '../../../gear-grid/actions/gear-grid.actions';
+import {SetItem} from '../../../gear-grid/actions/gear-grid.actions';
 
 @Component({
   selector: 'kdm-items-container',
@@ -24,8 +24,8 @@ export class ItemsContainerComponent implements OnInit {
     this.store.dispatch(new RetrieveItems());
   }
 
-  addItem(item: Item): void {
-    this.store.dispatch(new AddItem(item));
+  setItem(item: { item: Item, position: number }): void {
+    this.store.dispatch(new SetItem(item.item, item.position));
   }
 
 }

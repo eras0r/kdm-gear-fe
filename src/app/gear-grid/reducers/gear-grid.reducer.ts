@@ -14,22 +14,19 @@ export const initialState: GearGridFeatureState = {
 
 export function reducer(state = initialState, action: GearGridActions): GearGridFeatureState {
   switch (action.type) {
-
-    case GearGridActionTypes.LoadGearGrids:
+    case GearGridActionTypes.LoadGearGrids: {
       return state;
-    case GearGridActionTypes.AddItem:
+    }
+    case GearGridActionTypes.SetItem: {
       const newState = {
         ...state,
       };
 
-      // copy gear grid object
-      // newState.gearGrid = Object.assign(newState.gearGrid, state.gearGrid);
-
-      // copy gearGrid.items array and add new item to it then assign to newState.gearGrid.items
-      newState.gearGrid.items = [...state.gearGrid.items, action.item];
-      // newState.gearGrid.items.push(action.item);
+      newState.gearGrid.items = [...state.gearGrid.items];
+      newState.gearGrid.items[action.position] = action.item;
 
       return newState;
+    }
     default:
       return state;
   }

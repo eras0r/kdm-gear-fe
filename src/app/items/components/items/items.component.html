@@ -1,14 +1,21 @@
 <div class="container-fluid">
 
   <div class="row col-sm-12">
-    <select id="item" [(ngModel)]="selectedItem">
-      <option *ngFor="let item of items" [ngValue]="item">{{item.name}}</option>
-    </select>
+    <div cdkAriaLive="col-sm-8">
+      <select id="item" [(ngModel)]="selectedItem">
+        <option *ngFor="let item of items" [ngValue]="item">{{item.name}}</option>
+      </select>
+    </div>
+    <div class="col-sm-4">
+      <select id="position" [(ngModel)]="position">
+        <option *ngFor="let pos of positions" [ngValue]="pos">{{pos}}</option>
+      </select>
+    </div>
   </div>
 
   <div class="row">
     <div class="col-sm-12">
-      <button (click)="addItem()">add item</button>
+      <button (click)="setItem()">set item</button>
     </div>
   </div>
 </div>
