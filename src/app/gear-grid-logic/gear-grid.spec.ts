@@ -69,7 +69,7 @@ describe('Gear Grid', () => {
 
       beforeEach(() => {
         for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
-          gearGrid.items.push(new Item(pos));
+          gearGrid.items[pos] = new Item(pos);
         }
       });
 
@@ -616,7 +616,7 @@ describe('Gear Grid', () => {
 
       beforeEach(() => {
         for (let pos = 0; pos < gearGrid.getMaximumItemsCount(); pos++) {
-          gearGrid.items.push(new Item(pos));
+          gearGrid.items[pos] = new Item(pos);
         }
       });
 
