@@ -11,9 +11,9 @@ describe('GearItemComponent', () => {
   let fixture: ComponentFixture<GearItemComponent>;
   const mockItem = new Item(1, 'test item');
 
-  const getId = () => fixture.debugElement.query(By.css('.col-sm-4'));
+  const getId = () => fixture.debugElement.query(By.css('.item-id'));
 
-  const getName = () => fixture.debugElement.query(By.css('.col-sm-8'));
+  const getName = () => fixture.debugElement.query(By.css('.item-name'));
 
 
   beforeEach(async(() => {
