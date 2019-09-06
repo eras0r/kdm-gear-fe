@@ -7,6 +7,7 @@ import {GearGridContainerComponent} from './containers/gear-grid-container/gear-
 import {GearItemComponent} from './components/gear-item/gear-item.component';
 import {GearGridComponent} from './components/gear-grid/gear-grid.component';
 import {SharedModule} from '../shared/shared.module';
+import {DragulaModule} from 'ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     SharedModule,
     StoreModule.forFeature(fromGearGrid.FEATURE_NAME, fromGearGrid.reducer),
-    EffectsModule.forFeature([GearGridEffects])
+    EffectsModule.forFeature([GearGridEffects]),
+    DragulaModule
   ],
   exports: [
     GearGridContainerComponent

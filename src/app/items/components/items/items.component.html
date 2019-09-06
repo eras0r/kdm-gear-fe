@@ -1,6 +1,25 @@
 <div class="container-fluid">
 
   <div class="row col-sm-12">
+    <h2>Draggable items</h2>
+
+    <div dragula="ITEMS" [(dragulaModel)]="items">
+    <!--<div dragula="ITEMS">-->
+      <div *ngFor="let item of items" style="border: 1px solid red">
+        <!-- TODO introduce a component for this -->
+        <div class="row">
+          <span class="col-sm-4">id</span>
+          <span class="col-sm-8">{{item.id}}</span>
+        </div>
+        <div class="row">
+          <span class="col-sm-4">name</span>
+          <span class="col-sm-8">{{item.name}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row col-sm-12">
     <div cdkAriaLive="col-sm-8">
       <select id="item" [(ngModel)]="selectedItem">
         <option *ngFor="let item of items" [ngValue]="item">{{item.name}}</option>

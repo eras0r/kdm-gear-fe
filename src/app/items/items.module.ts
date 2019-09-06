@@ -7,6 +7,7 @@ import {ItemsService} from './services/items.service';
 import {ItemsContainerComponent} from './conatainers/items-container/items-container.component';
 import {ItemsComponent} from './components/items/items.component';
 import {SharedModule} from '../shared/shared.module';
+import {DragulaModule} from 'ng2-dragula';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {SharedModule} from '../shared/shared.module';
   imports: [
     SharedModule,
     StoreModule.forFeature(fromItem.FEATURE_NAME, fromItem.reducer),
-    EffectsModule.forFeature([ItemEffects])
+    EffectsModule.forFeature([ItemEffects]),
+    DragulaModule
   ],
   exports: [
     ItemsContainerComponent
