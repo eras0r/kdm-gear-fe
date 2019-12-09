@@ -20,14 +20,14 @@ export function reducer(state = initialState, action: GearGridActions): GearGrid
     case GearGridActionTypes.AddItem:
       const newState = {
         ...state,
+        gearGrid: Object.assign(new GearGrid(state.gearGrid.size), state.gearGrid) // copy gearGrid object
       };
 
-      // copy gear grid object
-      // newState.gearGrid = Object.assign(newState.gearGrid, state.gearGrid);
-
       // copy gearGrid.items array and add new item to it then assign to newState.gearGrid.items
-      newState.gearGrid.items = [...state.gearGrid.items, action.item];
-      // newState.gearGrid.items.push(action.item);
+      newState.gearGrid.items = [
+        ...state.gearGrid.items,
+        action.item
+      ];
 
       return newState;
     default:
