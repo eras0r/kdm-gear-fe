@@ -16,10 +16,14 @@ import {environment} from '../../environments/environment';
     HttpClientModule,
 
     // ngrx
-    StoreModule.forRoot(reducers, {metaReducers}),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreModule.forRoot(reducers, {
+      metaReducers,
+      runtimeChecks: {
+        strictStateImmutability: true,
+        strictActionImmutability: true
+      }
+    }),
     EffectsModule.forRoot([AppEffects]),
-
     environment.production ? [] : StoreDevtoolsModule.instrument({
       name: 'Kingdom Death gear'
     })
