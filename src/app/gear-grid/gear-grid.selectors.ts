@@ -16,3 +16,13 @@ export const getItems = createSelector<GearGridFeatureState, GearGridFeatureStat
   selectGearGridFeature,
   (state: GearGridFeatureState) => state.gearGrid.items
 );
+
+export const getTest = createSelector(
+  selectGearGridFeature,
+  (state: GearGridFeatureState) => state.test
+);
+
+export const getItem = createSelector(
+  selectGearGridFeature,
+  (state: GearGridFeatureState) => state.item
+);
