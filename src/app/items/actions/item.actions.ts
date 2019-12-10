@@ -1,33 +1,16 @@
-import {Action} from '@ngrx/store';
+import {createAction, props} from '@ngrx/store';
 import {Item} from '../../gear-grid-logic/item';
 
-export enum ItemActionTypes {
-  RetrieveItems = '[Item] Retrieve Items',
-  RetrieveItemsSuccess = '[Item] Retrieve Items Success',
-  RetrieveItemsError = '[Item] Retrieve Items Error'
-}
+export const retrieveItems = createAction(
+  '[Item] Retrieve Items'
+);
 
-export class RetrieveItems implements Action {
-  readonly type = ItemActionTypes.RetrieveItems;
-}
+export const retrieveItemsSuccess = createAction(
+  '[Item] Retrieve Items Success',
+  props<{ items: Item[] }>()
+);
 
-export class RetrieveItemsSuccess implements Action {
-  readonly type = ItemActionTypes.RetrieveItemsSuccess;
-
-  constructor(public items: Item[]) {
-
-  }
-}
-
-export class RetrieveItemsError implements Action {
-  readonly type = ItemActionTypes.RetrieveItemsError;
-
-  constructor(public error: any) {
-
-  }
-}
-
-export type ItemActions =
-  RetrieveItems
-  | RetrieveItemsSuccess
-  | RetrieveItemsError;
+export const retrieveItemsError = createAction(
+  '[Item] Retrieve Items Error',
+  props<{ error: any }>()
+);

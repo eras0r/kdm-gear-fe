@@ -1,23 +1,24 @@
 import {Injectable} from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
-import {ItemActionTypes, RetrieveItems, RetrieveItemsError, RetrieveItemsSuccess} from '../actions/item.actions';
+import {Actions, createEffect, ofType} from '@ngrx/effects';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {ItemsService} from '../services/items.service';
 import {of} from 'rxjs';
+import * as ItemActions from '../actions/item.actions';
 
 @Injectable()
 export class ItemEffects {
 
-  @Effect()
-  loadItems$ = this.actions$.pipe(
-    ofType(ItemActionTypes.RetrieveItems),
-    switchMap((action: RetrieveItems) =>
-      this.itemService.loadItems().pipe(
-        map((response) => new RetrieveItemsSuccess(response)),
-        catchError((error) => of(new RetrieveItemsError(error)))
+  loadItems$ = createEffect(() => {
+    return this.actions$.pipe(
+      ofType(ItemActions.retrieveItems),
+      switchMap(() =>
+        this.itemService.loadItems().pipe(
+          map((items) => ItemActions.retrieveItemsSuccess({items})),
+          catchError((error) => of(ItemActions.retrieveItemsError({error})))
+        )
       )
-    )
-  );
+    );
+  });
 
   constructor(private actions$: Actions, private itemService: ItemsService) {
   }

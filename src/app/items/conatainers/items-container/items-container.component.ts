@@ -4,8 +4,8 @@ import {ItemsFeatureState} from '../../reducers/item.reducer';
 import {Observable} from 'rxjs';
 import {Item} from '../../../gear-grid-logic/item';
 import {getItems} from '../../reducers/item.selectors';
-import {RetrieveItems} from '../../actions/item.actions';
-import {AddItem} from '../../../gear-grid/actions/gear-grid.actions';
+import {retrieveItems} from '../../actions/item.actions';
+import {addItem} from '../../../gear-grid/actions/gear-grid.actions';
 
 @Component({
   selector: 'kdm-items-container',
@@ -21,11 +21,11 @@ export class ItemsContainerComponent implements OnInit {
 
   ngOnInit() {
     this.items$ = this.store.pipe(select(getItems));
-    this.store.dispatch(new RetrieveItems());
+    this.store.dispatch(retrieveItems());
   }
 
   addItem(item: Item): void {
-    this.store.dispatch(new AddItem(item));
+    this.store.dispatch(addItem({item}));
   }
 
 }

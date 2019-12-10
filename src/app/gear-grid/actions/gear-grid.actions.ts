@@ -1,21 +1,11 @@
-import {Action} from '@ngrx/store';
+import {createAction, props} from '@ngrx/store';
 import {Item} from '../../gear-grid-logic/item';
 
-export enum GearGridActionTypes {
-  LoadGearGrids = '[GearGrid] Load GearGrids',
-  AddItem = '[GearGrid] AddItem'
-}
+export const loadGearGrids = createAction(
+    '[GearGrid] Load GearGrids'
+);
 
-export class LoadGearGrids implements Action {
-  readonly type = GearGridActionTypes.LoadGearGrids;
-}
-
-export class AddItem implements Action {
-  readonly type = GearGridActionTypes.AddItem;
-
-  constructor(public item: Item) {
-  }
-
-}
-
-export type GearGridActions = LoadGearGrids | AddItem;
+export const addItem = createAction(
+    '[GearGrid] AddItem',
+    props<{ item: Item }>()
+);

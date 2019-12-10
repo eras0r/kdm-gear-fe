@@ -1,6 +1,6 @@
-import {GearGridActions, GearGridActionTypes} from '../actions/gear-grid.actions';
+import {Action, createFeatureSelector, createReducer, on} from '@ngrx/store';
 import {GearGrid} from '../../gear-grid-logic/gear-grid';
-import {createFeatureSelector} from '@ngrx/store';
+import * as GearGridActions from '../actions/gear-grid.actions';
 
 export const FEATURE_NAME = 'gearGrid';
 
@@ -12,27 +12,28 @@ export const initialState: GearGridFeatureState = {
   gearGrid: new GearGrid(3),
 };
 
-export function reducer(state = initialState, action: GearGridActions): GearGridFeatureState {
-  switch (action.type) {
+const gearGridReducer = createReducer(
+  initialState,
 
-    case GearGridActionTypes.LoadGearGrids:
-      return state;
-    case GearGridActionTypes.AddItem:
-      const newState = {
-        ...state,
-        gearGrid: Object.assign(new GearGrid(state.gearGrid.size), state.gearGrid) // copy gearGrid object
-      };
+  on(GearGridActions.loadGearGrids, state => state),
+  on(GearGridActions.addItem, (state, {item}) => {
+    const newState = {
+      ...state,
+      gearGrid: Object.assign(new GearGrid(state.gearGrid.size), state.gearGrid) // copy gearGrid object
+    };
 
-      // copy gearGrid.items array and add new item to it then assign to newState.gearGrid.items
-      newState.gearGrid.items = [
-        ...state.gearGrid.items,
-        action.item
-      ];
+    // copy gearGrid.items array and add new item to it then assign to newState.gearGrid.items
+    newState.gearGrid.items = [
+      ...state.gearGrid.items,
+      item
+    ];
 
-      return newState;
-    default:
-      return state;
-  }
+    return newState;
+  }),
+);
+
+export function reducer(state: GearGridFeatureState | undefined, action: Action) {
+  return gearGridReducer(state, action);
 }
 
 export const selectGearGridFeature = createFeatureSelector<GearGridFeatureState>(
