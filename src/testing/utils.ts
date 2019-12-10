@@ -4,7 +4,7 @@ import {ActionsSubject, ReducerManager, StateObservable, Store, StoreModule} fro
 import {BehaviorSubject} from 'rxjs';
 import {RouterTestingModule} from '@angular/router/testing';
 import {SharedModule} from '../app/shared/shared.module';
-import {AppState} from '../app/reducers';
+import {AppState} from '../app/core/core.state';
 import {GearGrid} from '../app/gear-grid-logic/gear-grid';
 import {CoreModule} from '../app/core/core.module';
 

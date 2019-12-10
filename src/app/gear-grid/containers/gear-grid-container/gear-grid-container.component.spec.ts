@@ -6,7 +6,7 @@ import {GearGridComponent} from '../../components/gear-grid/gear-grid.component'
 import {GearItemComponent} from '../../components/gear-item/gear-item.component';
 import {MockStore, TestingModule} from '../../../../testing/utils';
 import {GearGrid} from '../../../gear-grid-logic/gear-grid';
-import {AppState} from '../../../reducers';
+import {AppState} from '../../../core/core.state';
 import {CoreModule} from '../../../core/core.module';
 
 type GearGridFeatureStateSlice = Pick<AppState, 'gearGrid'>;
