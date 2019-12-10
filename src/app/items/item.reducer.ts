@@ -1,6 +1,6 @@
-import {Item} from '../../gear-grid-logic/item';
+import {Item} from '../gear-grid-logic/item';
 import {Action, createFeatureSelector, createReducer, on} from '@ngrx/store';
-import * as ItemActions from '../actions/item.actions';
+import * as ItemActions from './item.actions';
 
 export const FEATURE_NAME = 'items';
 

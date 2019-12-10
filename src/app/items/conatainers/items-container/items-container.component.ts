@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {ItemsFeatureState} from '../../reducers/item.reducer';
+import {ItemsFeatureState} from '../../item.reducer';
 import {Observable} from 'rxjs';
 import {Item} from '../../../gear-grid-logic/item';
-import {getItems} from '../../reducers/item.selectors';
-import {retrieveItems} from '../../actions/item.actions';
+import {getItems} from '../../item.selectors';
+import {retrieveItems} from '../../item.actions';
 import {addItem} from '../../../gear-grid/gear-grid.actions';
 
 @Component({

@@ -1,7 +1,7 @@
 import {ActionReducerMap, MetaReducer} from '@ngrx/store';
 import {environment} from '../../environments/environment';
 import * as fromGearGrid from '../gear-grid/gear-grid.reducer';
-import * as fromItems from '../items/reducers/item.reducer';
+import * as fromItems from '../items/item.reducer';
 
 export interface AppState {
   gearGrid: fromGearGrid.GearGridFeatureState;

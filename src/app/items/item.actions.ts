@@ -1,5 +1,5 @@
 import {createAction, props} from '@ngrx/store';
-import {Item} from '../../gear-grid-logic/item';
+import {Item} from '../gear-grid-logic/item';
 
 export const retrieveItems = createAction(
   '[Item] Retrieve Items'

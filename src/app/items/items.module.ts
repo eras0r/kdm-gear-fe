@@ -1,8 +1,8 @@
 import {NgModule} from '@angular/core';
 import {StoreModule} from '@ngrx/store';
-import * as fromItem from './reducers/item.reducer';
+import * as fromItem from './item.reducer';
 import {EffectsModule} from '@ngrx/effects';
-import {ItemEffects} from './effects/item.effects';
+import {ItemEffects} from './item.effects';
 import {ItemsService} from './services/items.service';
 import {ItemsContainerComponent} from './conatainers/items-container/items-container.component';
 import {ItemsComponent} from './components/items/items.component';
