@@ -1,6 +1,6 @@
 import {Action, createFeatureSelector, createReducer, on} from '@ngrx/store';
-import {GearGrid} from '../../gear-grid-logic/gear-grid';
-import * as GearGridActions from '../actions/gear-grid.actions';
+import {GearGrid} from '../gear-grid-logic/gear-grid';
+import * as GearGridActions from './gear-grid.actions';
 
 export const FEATURE_NAME = 'gearGrid';
 

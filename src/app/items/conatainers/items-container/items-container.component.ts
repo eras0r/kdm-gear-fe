@@ -5,7 +5,7 @@ import {Observable} from 'rxjs';
 import {Item} from '../../../gear-grid-logic/item';
 import {getItems} from '../../reducers/item.selectors';
 import {retrieveItems} from '../../actions/item.actions';
-import {addItem} from '../../../gear-grid/actions/gear-grid.actions';
+import {addItem} from '../../../gear-grid/gear-grid.actions';
 
 @Component({
   selector: 'kdm-items-container',

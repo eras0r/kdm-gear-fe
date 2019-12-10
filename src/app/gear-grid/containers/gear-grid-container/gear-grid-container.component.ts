@@ -2,8 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {Item} from '../../../gear-grid-logic/item';
 import {Observable} from 'rxjs';
-import {getItems} from '../../reducers/gear-grid.selectors';
-import {GearGridFeatureState} from '../../reducers/gear-grid.reducer';
+import {getItems} from '../../gear-grid.selectors';
+import {GearGridFeatureState} from '../../gear-grid.reducer';
 
 @Component({
   selector: 'kdm-gear-grid-container',
