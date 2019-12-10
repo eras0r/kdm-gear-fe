@@ -4,9 +4,10 @@ import {ActionsSubject, ReducerManager, StateObservable, Store, StoreModule} fro
 import {BehaviorSubject} from 'rxjs';
 import {RouterTestingModule} from '@angular/router/testing';
 import {SharedModule} from '../app/shared/shared.module';
-import {AppState} from '../app/reducers';
+import {AppState} from '../app/core/core.state';
 import {GearGrid} from '../app/gear-grid-logic/gear-grid';
 import {CoreModule} from '../app/core/core.module';
+import {Item} from '../app/gear-grid-logic/item';
 
 @Injectable()
 export class MockStore<T> extends Store<T> {
@@ -43,6 +44,8 @@ export class MockAppStore extends MockStore<AppState> {
     return {
       gearGrid: {
         gearGrid: new GearGrid(3),
+        test: 0,
+        item: new Item(0)
       },
       items: {
         items: []

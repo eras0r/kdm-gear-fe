@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {ItemsFeatureState} from '../../reducers/item.reducer';
+import {ItemsFeatureState} from '../../item.reducer';
 import {Observable} from 'rxjs';
 import {Item} from '../../../gear-grid-logic/item';
-import {getItems} from '../../reducers/item.selectors';
-import {RetrieveItems} from '../../actions/item.actions';
-import {AddItem} from '../../../gear-grid/actions/gear-grid.actions';
+import {getItems} from '../../item.selectors';
+import {retrieveItems} from '../../item.actions';
+import {addItem} from '../../../gear-grid/gear-grid.actions';
 
 @Component({
   selector: 'kdm-items-container',
@@ -21,11 +21,11 @@ export class ItemsContainerComponent implements OnInit {
 
   ngOnInit() {
     this.items$ = this.store.pipe(select(getItems));
-    this.store.dispatch(new RetrieveItems());
+    this.store.dispatch(retrieveItems());
   }
 
   addItem(item: Item): void {
-    this.store.dispatch(new AddItem(item));
+    this.store.dispatch(addItem({item}));
   }
 
 }

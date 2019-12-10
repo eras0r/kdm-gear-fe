@@ -6,51 +6,54 @@ import {GearGridComponent} from '../../components/gear-grid/gear-grid.component'
 import {GearItemComponent} from '../../components/gear-item/gear-item.component';
 import {MockStore, TestingModule} from '../../../../testing/utils';
 import {GearGrid} from '../../../gear-grid-logic/gear-grid';
-import {AppState} from '../../../reducers';
+import {AppState} from '../../../core/core.state';
 import {CoreModule} from '../../../core/core.module';
+import {Item} from '../../../gear-grid-logic/item';
 
 type GearGridFeatureStateSlice = Pick<AppState, 'gearGrid'>;
 
 describe('GearGridContainerComponent', () => {
-  let component: GearGridContainerComponent;
-  let fixture: ComponentFixture<GearGridContainerComponent>;
-  let store: MockStore<GearGridFeatureStateSlice>;
+    let component: GearGridContainerComponent;
+    let fixture: ComponentFixture<GearGridContainerComponent>;
+    let store: MockStore<GearGridFeatureStateSlice>;
 
-  beforeEach(async () => {
-    TestBed.configureTestingModule({
-      imports: [
-        CoreModule,
-        TestingModule
-      ],
-      declarations: [
-        GearGridContainerComponent,
-        GearGridComponent,
-        GearItemComponent
-      ]
+    beforeEach(async () => {
+        TestBed.configureTestingModule({
+            imports: [
+                CoreModule,
+                TestingModule
+            ],
+            declarations: [
+                GearGridContainerComponent,
+                GearGridComponent,
+                GearItemComponent
+            ]
+        });
+
+        await TestBed.compileComponents();
+
+        store = TestBed.get(Store);
+        store.setState(createMockState());
+
+        spyOn(store, 'dispatch').and.callThrough();
+
+        fixture = TestBed.createComponent(GearGridContainerComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
     });
 
-    await TestBed.compileComponents();
-
-    store = TestBed.get(Store);
-    store.setState(createMockState());
-
-    spyOn(store, 'dispatch').and.callThrough();
-
-    fixture = TestBed.createComponent(GearGridContainerComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 
 });
 
 function createMockState(): GearGridFeatureStateSlice {
-  return {
-    gearGrid: {
-      gearGrid: new GearGrid(3),
-    }
-  };
+    return {
+        gearGrid: {
+            gearGrid: new GearGrid(3),
+            test: 0,
+            item: new Item(0)
+        }
+    };
 }

@@ -3,7 +3,7 @@ import {provideMockActions} from '@ngrx/effects/testing';
 import {Observable} from 'rxjs';
 
 import {ItemEffects} from './item.effects';
-import {ItemsService} from '../services/items.service';
+import {ItemsService} from './services/items.service';
 
 describe('ItemEffects', () => {
   // TODO fix lint error as soon as test makes sense
